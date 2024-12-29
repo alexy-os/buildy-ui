@@ -1,0 +1,240 @@
+{
+  "category": "footer",
+  "components": [
+    {
+      "name": "FooterSocialButtons",
+      "path": "src\\blocks\\footer\\FooterSocialButtons.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "lucide-react"
+        ]
+      },
+      "content": {
+        "brand": "BuildY/UI",
+        "description": "Easily build your website with our UI components",
+        "placeholder": "Your email",
+        "quickLinks": [
+          {
+            "id": "home",
+            "label": "Home",
+            "href": "#"
+          },
+          {
+            "id": "about",
+            "label": "About Us",
+            "href": "#"
+          },
+          {
+            "id": "services",
+            "label": "Services",
+            "href": "#"
+          },
+          {
+            "id": "products",
+            "label": "Products",
+            "href": "#"
+          },
+          {
+            "id": "contact",
+            "label": "Contact",
+            "href": "#"
+          }
+        ],
+        "contact": {
+          "address": "1st BuildY Street",
+          "city": "Shadcn City, BC 34567, Radix",
+          "phone": "(123) 456-7890",
+          "email": "welcome@buildy.co"
+        },
+        "socialMedia": [
+          {
+            "id": "facebook",
+            "icon": {
+              "type": "Component",
+              "name": "Facebook",
+              "props": {
+                "className": "h-4 w-4"
+              }
+            },
+            "label": "Facebook"
+          },
+          {
+            "id": "twitter",
+            "icon": {
+              "type": "Component",
+              "name": "Twitter",
+              "props": {
+                "className": "h-4 w-4"
+              }
+            },
+            "label": "Twitter"
+          },
+          {
+            "id": "instagram",
+            "icon": {
+              "type": "Component",
+              "name": "Instagram",
+              "props": {
+                "className": "h-4 w-4"
+              }
+            },
+            "label": "Instagram"
+          },
+          {
+            "id": "linkedin",
+            "icon": {
+              "type": "Component",
+              "name": "Linkedin",
+              "props": {
+                "className": "h-4 w-4"
+              }
+            },
+            "label": "LinkedIn"
+          }
+        ],
+        "legal": [
+          {
+            "id": "privacy",
+            "label": "Privacy Policy",
+            "href": "#"
+          },
+          {
+            "id": "terms",
+            "label": "Terms of Service",
+            "href": "#"
+          },
+          {
+            "id": "cookies",
+            "label": "Cookie Settings",
+            "href": "#"
+          }
+        ]
+      },
+      "sourceCode": "import { Button } from \"@/components/ui/button\"\r\nimport { Input } from \"@/components/ui/input\"\r\nimport { Facebook, Instagram, Linkedin, Send, Twitter, Volleyball } from \"lucide-react\"\r\n\r\ntype Content = {\r\n  brand: string;\r\n  description: string;\r\n  placeholder: string;\r\n  quickLinks: { id: string; label: string; href: string }[];\r\n  contact: {\r\n    address: string;\r\n    city: string;\r\n    phone: string;\r\n    email: string;\r\n  },\r\n  socialMedia: { id: string; icon: React.ReactNode; label: string }[];\r\n  legal: { id: string; label: string; href: string }[];\r\n}\r\n\r\nconst content: Content = {\r\n  brand: \"BuildY/UI\",\r\n  description: \"Easily build your website with our UI components\",\r\n  placeholder: \"Your email\",\r\n  quickLinks: [\r\n    { id: 'home', label: 'Home', href: '#' },\r\n    { id: 'about', label: 'About Us', href: '#' },\r\n    { id: 'services', label: 'Services', href: '#' },\r\n    { id: 'products', label: 'Products', href: '#' },\r\n    { id: 'contact', label: 'Contact', href: '#' }\r\n  ],\r\n  contact: {\r\n    address: \"1st BuildY Street\",\r\n    city: \"Shadcn City, BC 34567, Radix\",\r\n    phone: \"(123) 456-7890\",\r\n    email: \"welcome@buildy.co\"\r\n  },\r\n  socialMedia: [\r\n    { id: 'facebook', icon: <Facebook className=\"h-4 w-4\" />, label: 'Facebook' },\r\n    { id: 'twitter', icon: <Twitter className=\"h-4 w-4\" />, label: 'Twitter' },\r\n    { id: 'instagram', icon: <Instagram className=\"h-4 w-4\" />, label: 'Instagram' },\r\n    { id: 'linkedin', icon: <Linkedin className=\"h-4 w-4\" />, label: 'LinkedIn' }\r\n  ],\r\n  legal: [\r\n    { id: 'privacy', label: 'Privacy Policy', href: '#' },\r\n    { id: 'terms', label: 'Terms of Service', href: '#' },\r\n    { id: 'cookies', label: 'Cookie Settings', href: '#' }\r\n  ]\r\n} as const\r\n\r\ntype FooterSocialButtonsProps = React.ComponentPropsWithoutRef<\"footer\"> & Partial<Content>;\r\n\r\nexport const FooterSocialButtons = (props: FooterSocialButtonsProps) => {\r\n  const { brand, description, placeholder, quickLinks, contact, socialMedia, legal } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <footer className=\"w-full py-4 lg:py-8 bg-background text-foreground\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"grid gap-12 md:grid-cols-2 lg:grid-cols-4\">\r\n          <div>\r\n            <div className=\"mb-4 text-2xl font-bold\">\r\n              <Volleyball className=\"mr-1 h-8 w-8 inline-block\" /> {brand}\r\n            </div>\r\n            <p className=\"mb-6 text-muted-foreground\">\r\n              {description}\r\n            </p>\r\n            <div className=\"flex\">\r\n              <Input \r\n                type=\"email\" \r\n                placeholder={placeholder} \r\n                className=\"flex-grow\" \r\n              />\r\n              <Button \r\n                type=\"submit\" \r\n                variant=\"secondary\"\r\n                size=\"icon\" \r\n                className=\"ml-2\"\r\n              >\r\n                <Send className=\"h-4 w-4\" />\r\n              </Button>\r\n            </div>\r\n          </div>\r\n          <div>\r\n            <h3 className=\"mb-4 text-lg font-semibold\">Quick Links</h3>\r\n            <nav className=\"space-y-2\">\r\n              {quickLinks?.map((link) => (\r\n                <a \r\n                  key={link.id} \r\n                  href={link.href} \r\n                  className=\"block hover:text-primary\"\r\n                >\r\n                  {link.label}\r\n                </a>\r\n              ))}\r\n            </nav>\r\n          </div>\r\n          <div>\r\n            <h3 className=\"mb-4 text-lg font-semibold\">Contact Us</h3>\r\n            <address className=\"not-italic space-y-2\">\r\n              <p>{contact.address}</p>\r\n              <p>{contact.city}</p>\r\n              <p>Phone: {contact.phone}</p>\r\n              <p>Email: {contact.email}</p>\r\n            </address>\r\n          </div>\r\n          <div>\r\n            <h3 className=\"mb-4 text-lg font-semibold\">Follow Us</h3>\r\n            <div className=\"flex space-x-2\">\r\n              {socialMedia?.map((social) => (\r\n                <Button \r\n                  key={social.id} \r\n                  variant=\"outline\" \r\n                  size=\"icon\"\r\n                >\r\n                  {social.icon}\r\n                  <span className=\"sr-only\">{social.label}</span>\r\n                </Button>\r\n              ))}\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div className=\"mt-12 border-t pt-8 text-center\">\r\n          <div className=\"flex flex-col items-center justify-between md:flex-row\">\r\n            <p className=\"text-sm text-muted-foreground\">\r\n              © 2024 BuildY/UI. All rights reserved\r\n            </p>\r\n            <nav className=\"flex gap-4\">\r\n              {legal?.map((item) => (\r\n                <a \r\n                  key={item.id} \r\n                  href={item.href} \r\n                  className=\"hover:text-primary\"\r\n                >\r\n                  {item.label}\r\n                </a>\r\n              ))}\r\n            </nav>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </footer>\r\n  )\r\n}"
+    },
+    {
+      "name": "FooterFourColumns",
+      "path": "src\\blocks\\footer\\FooterFourColumns.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "lucide-react"
+        ]
+      },
+      "content": {
+        "brand": "BuildY/UI",
+        "description": "Easily build your website with our UI components",
+        "copyright": "© 2024 BuildY/UI. All rights reserved.",
+        "links": [
+          {
+            "name": "Terms and Conditions",
+            "href": "#"
+          },
+          {
+            "name": "Privacy Policy",
+            "href": "#"
+          }
+        ],
+        "menu": [
+          {
+            "title": "Product",
+            "links": [
+              {
+                "name": "Overview",
+                "href": "#"
+              },
+              {
+                "name": "Pricing",
+                "href": "#"
+              },
+              {
+                "name": "Marketplace",
+                "href": "#"
+              },
+              {
+                "name": "Features",
+                "href": "#"
+              },
+              {
+                "name": "Integrations",
+                "href": "#"
+              },
+              {
+                "name": "Pricing",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Company",
+            "links": [
+              {
+                "name": "About",
+                "href": "#"
+              },
+              {
+                "name": "Team",
+                "href": "#"
+              },
+              {
+                "name": "Blog",
+                "href": "#"
+              },
+              {
+                "name": "Careers",
+                "href": "#"
+              },
+              {
+                "name": "Contact",
+                "href": "#"
+              },
+              {
+                "name": "Privacy",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "name": "Help",
+                "href": "#"
+              },
+              {
+                "name": "Sales",
+                "href": "#"
+              },
+              {
+                "name": "Advertise",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Social",
+            "links": [
+              {
+                "name": "Twitter",
+                "href": "#"
+              },
+              {
+                "name": "Instagram",
+                "href": "#"
+              },
+              {
+                "name": "LinkedIn",
+                "href": "#"
+              }
+            ]
+          }
+        ]
+      },
+      "sourceCode": "import { Volleyball } from \"lucide-react\";  \r\n\r\ntype Content = {\r\n  brand: string;\r\n  description: string;\r\n  copyright: string;\r\n  links: { name: string; href: string }[];\r\n  menu: { title: string; links: { name: string; href: string }[] }[];\r\n};\r\n\r\nconst content: Content = {\r\n  brand: \"BuildY/UI\",\r\n  description: \"Easily build your website with our UI components\",\r\n  copyright: \"© 2024 BuildY/UI. All rights reserved.\",\r\n  links: [\r\n    { name: 'Terms and Conditions', href: '#' },\r\n    { name: 'Privacy Policy', href: '#' },\r\n  ],\r\n  menu: [\r\n    {\r\n      title: 'Product',\r\n      links: [\r\n        { name: 'Overview', href: '#' },\r\n        { name: 'Pricing', href: '#' },\r\n        { name: 'Marketplace', href: '#' },\r\n        { name: 'Features', href: '#' },\r\n        { name: 'Integrations', href: '#' },\r\n        { name: 'Pricing', href: '#' },\r\n      ],\r\n    },\r\n    {\r\n      title: 'Company',\r\n      links: [\r\n        { name: 'About', href: '#' },\r\n        { name: 'Team', href: '#' },\r\n        { name: 'Blog', href: '#' },\r\n        { name: 'Careers', href: '#' },\r\n        { name: 'Contact', href: '#' },\r\n        { name: 'Privacy', href: '#' },\r\n      ],\r\n    },\r\n    {\r\n      title: 'Resources',\r\n      links: [\r\n        { name: 'Help', href: '#' },\r\n        { name: 'Sales', href: '#' },\r\n        { name: 'Advertise', href: '#' },\r\n      ],\r\n    },\r\n    {\r\n      title: 'Social',\r\n      links: [\r\n        { name: 'Twitter', href: '#' },\r\n        { name: 'Instagram', href: '#' },\r\n        { name: 'LinkedIn', href: '#' },\r\n      ],\r\n    },\r\n  ]\r\n} as const;\r\n\r\ntype FooterFourColumnsProps = React.ComponentPropsWithoutRef<\"footer\"> & Partial<Content>;\r\n\r\nexport const FooterFourColumns = (props: FooterFourColumnsProps) => {\r\n  const { brand, description, copyright, links, menu } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <footer className=\"w-full py-4 lg:py-8\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"grid grid-cols-2 gap-8 lg:grid-cols-6\">\r\n          <div className=\"col-span-2\">\r\n            <div className=\"text-2xl font-bold mb-8 lg:mb-4\">\r\n              <Volleyball className=\"mr-1 h-8 w-8 inline-block\" /> {brand}\r\n            </div>\r\n            <p className=\"text-muted-foreground\">{description}</p>\r\n          </div>\r\n          {menu?.map((item, sectionIdx) => (\r\n            <div key={sectionIdx}>\r\n              <h3 className=\"mb-4 font-bold\">{item.title}</h3>\r\n              <ul className=\"space-y-4 text-muted-foreground\">\r\n                {item.links.map((link, linkIdx) => (\r\n                  <li\r\n                    key={`${link.name}-${linkIdx}`}\r\n                    className=\"font-medium hover:text-primary\"\r\n                  >\r\n                    <a href={link.href}>{link.name}</a>\r\n                  </li>\r\n                ))}\r\n              </ul>\r\n            </div>\r\n          ))}\r\n        </div>\r\n        <div className=\"mt-24 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center\">\r\n          <p>{copyright}</p>\r\n          <ul className=\"flex gap-4\">\r\n            {links?.map((item, Idx) => (\r\n              <li key={`${item.name}-${Idx}`} className=\"underline hover:text-primary\">\r\n                <a href={item.href}>{item.name}</a>\r\n              </li>\r\n            ))}\r\n          </ul>\r\n        </div>\r\n    </div>\r\n  </footer>\r\n  );\r\n};"
+    }
+  ],
+  "generated": "2024-12-29T11:55:39.967Z"
+}

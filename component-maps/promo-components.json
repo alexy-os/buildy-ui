@@ -1,0 +1,357 @@
+{
+  "category": "promo",
+  "components": [
+    {
+      "name": "PromoTestimonials",
+      "path": "src\\blocks\\promo\\PromoTestimonials.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/components/ui/avatar",
+          "@/components/ui/card"
+        ]
+      },
+      "content": {
+        "title": "Why Developers Love",
+        "promotitle": "Buildy/UI",
+        "subtitle": "This - Freedom to Create",
+        "description": "Buildy/UI empowers developers with clean, unopinionated components, perfectly suited for marketing and business projects. No unnecessary styles, shadows, or gradients – just pure components ready to adapt to your vision.",
+        "testimonials": [
+          {
+            "image": "https://github.com/shadcn.png",
+            "name": "Sophia Lee",
+            "userName": "@sophia_uiux",
+            "comment": "With Buildy/UI, I finally have a design system that doesn't dictate my style. The components are clean, consistent, and free from clutter – a perfect foundation for creativity!"
+          },
+          {
+            "image": "https://github.com/shadcn.png",
+            "name": "Daniel Chen",
+            "userName": "@daniel_frontend",
+            "comment": "Other libraries forced me to strip out shadows and gradients manually. Buildy/UI gave me pure components, making my work faster and cleaner. I can focus on building, not fixing!"
+          },
+          {
+            "image": "https://github.com/shadcn.png",
+            "name": "Olivia Brown",
+            "userName": "@olivia_dev",
+            "comment": "The components are lightweight and perfectly structured. It's like prototyping but production-ready. Plus, the integration with Radix UI is a game-changer for accessibility!"
+          },
+          {
+            "image": "https://github.com/shadcn.png",
+            "name": "Ethan Smith",
+            "userName": "@ethan_code",
+            "comment": "Finally, a free library of components tailored for business and marketing. Buildy/UI components saved me hours of development time and delivered consistent results!"
+          },
+          {
+            "image": "https://github.com/shadcn.png",
+            "name": "Liam Carter",
+            "userName": "@liam_creative",
+            "comment": "Buildy/UI strips away unnecessary fluff. The components are minimal, versatile, and incredibly easy to customize. It's the freedom every designer and developer needs!"
+          },
+          {
+            "image": "https://github.com/shadcn.png",
+            "name": "Emily Johnson",
+            "userName": "@emily_builder",
+            "comment": "This library is a breath of fresh air. Simple, consistent, and clean components with zero unnecessary styling. Buildy/UI truly feels like a developer's dream toolkit!"
+          }
+        ]
+      },
+      "sourceCode": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardDescription,\r\n  CardHeader,\r\n  CardTitle,\r\n} from \"@/components/ui/card\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  promotitle: string;\r\n  subtitle: string;\r\n  description: string;\r\n  testimonials: {\r\n    image: string;\r\n    name: string;\r\n    userName: string;\r\n    comment: string;\r\n  }[];\r\n};\r\n\r\nconst content = {\r\n    title: \"Why Developers Love\",\r\n    promotitle: \"Buildy/UI\",\r\n    subtitle: \"This - Freedom to Create\",\r\n    description:\r\n      \"Buildy/UI empowers developers with clean, unopinionated components, perfectly suited for marketing and business projects. No unnecessary styles, shadows, or gradients – just pure components ready to adapt to your vision.\",\r\n  \r\n    testimonials: [\r\n      {\r\n        image: \"https://github.com/shadcn.png\",\r\n        name: \"Sophia Lee\",\r\n        userName: \"@sophia_uiux\",\r\n        comment:\r\n          \"With Buildy/UI, I finally have a design system that doesn't dictate my style. The components are clean, consistent, and free from clutter – a perfect foundation for creativity!\",\r\n      },\r\n      {\r\n        image: \"https://github.com/shadcn.png\",\r\n        name: \"Daniel Chen\",\r\n        userName: \"@daniel_frontend\",\r\n        comment:\r\n          \"Other libraries forced me to strip out shadows and gradients manually. Buildy/UI gave me pure components, making my work faster and cleaner. I can focus on building, not fixing!\",\r\n      },\r\n      {\r\n        image: \"https://github.com/shadcn.png\",\r\n        name: \"Olivia Brown\",\r\n        userName: \"@olivia_dev\",\r\n        comment:\r\n          \"The components are lightweight and perfectly structured. It's like prototyping but production-ready. Plus, the integration with Radix UI is a game-changer for accessibility!\",\r\n      },\r\n      {\r\n        image: \"https://github.com/shadcn.png\",\r\n        name: \"Ethan Smith\",\r\n        userName: \"@ethan_code\",\r\n        comment:\r\n          \"Finally, a free library of components tailored for business and marketing. Buildy/UI components saved me hours of development time and delivered consistent results!\",\r\n      },\r\n      {\r\n        image: \"https://github.com/shadcn.png\",\r\n        name: \"Liam Carter\",\r\n        userName: \"@liam_creative\",\r\n        comment:\r\n          \"Buildy/UI strips away unnecessary fluff. The components are minimal, versatile, and incredibly easy to customize. It's the freedom every designer and developer needs!\",\r\n      },\r\n      {\r\n        image: \"https://github.com/shadcn.png\",\r\n        name: \"Emily Johnson\",\r\n        userName: \"@emily_builder\",\r\n        comment:\r\n          \"This library is a breath of fresh air. Simple, consistent, and clean components with zero unnecessary styling. Buildy/UI truly feels like a developer's dream toolkit!\",\r\n      },\r\n    ],\r\n  } as const;\r\n\r\ntype PromoTestimonialsProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoTestimonials = (props: PromoTestimonialsProps) => {\r\n  const { title, promotitle, subtitle, description, testimonials } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"container mx-auto px-4 md:px-6 lg:px-8 py-8 lg:py-16\">\r\n      <header className=\"text-center space-y-4\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n          {title}{\" \"}\r\n          <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n            {promotitle}\r\n          </span>\r\n        </h2>\r\n        <h3 className=\"text-muted-foreground text-2xl md:text-3xl lg:text-4xl font-bold py-8\">\r\n          {subtitle}\r\n        </h3>\r\n        <p className=\"text-lg text-muted-foreground\">\r\n          {description}\r\n        </p>\r\n      </header>\r\n\r\n      <div className=\"grid md:grid-cols-2 lg:grid-cols-4 sm:block columns-2  lg:columns-3 lg:gap-6 mx-auto space-y-4 lg:space-y-6 mt-16\">\r\n        {testimonials?.map(\r\n          ({ image, name, userName, comment }) => (\r\n            <div\r\n              key={name}\r\n              className=\"relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\"\r\n            >\r\n              <Card\r\n                className=\"bg-secondary h-full relativemax-w-md md:break-inside-avoid rounded-2xl\"\r\n              >\r\n                <CardHeader className=\"flex flex-row items-center gap-4 pb-2\">\r\n                  <Avatar>\r\n                    <AvatarImage\r\n                      alt=\"\"\r\n                      src={image}\r\n                    />\r\n                    <AvatarFallback>OM</AvatarFallback>\r\n                  </Avatar>\r\n\r\n                  <div className=\"flex flex-col\">\r\n                    <CardTitle className=\"text-lg\">{name}</CardTitle>\r\n                    <CardDescription>{userName}</CardDescription>\r\n                  </div>\r\n                </CardHeader>\r\n\r\n                <CardContent>{comment}</CardContent>\r\n              </Card>\r\n            </div>\r\n          )\r\n        )}\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "PromoTeamSection",
+      "path": "src\\blocks\\promo\\PromoTeamSection.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/components/ui/button",
+          "@/components/ui/card",
+          "lucide-react"
+        ]
+      },
+      "content": {
+        "title": "Meet Our",
+        "promotitle": "Team",
+        "description": "The Buildy/UI team is dedicated to delivering exceptional UI components with a focus on modern frontend stacks and seamless developer experience.",
+        "teamList": [
+          {
+            "imageUrl": "https://avatars.githubusercontent.com/u/124599",
+            "name": "Sophia Lee",
+            "position": "UI/UX Designer",
+            "slogan": "Crafting beautiful and functional designs for seamless user experiences.",
+            "socialNetworks": [
+              {
+                "name": "Linkedin",
+                "url": "#"
+              },
+              {
+                "name": "Facebook",
+                "url": "#"
+              },
+              {
+                "name": "Instagram",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "imageUrl": "https://avatars.githubusercontent.com/u/124599",
+            "name": "Daniel Chen",
+            "position": "Frontend Developer",
+            "slogan": "Bringing ideas to life with clean and efficient code.",
+            "socialNetworks": [
+              {
+                "name": "Linkedin",
+                "url": "#"
+              },
+              {
+                "name": "Facebook",
+                "url": "#"
+              },
+              {
+                "name": "Instagram",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "imageUrl": "https://avatars.githubusercontent.com/u/124599",
+            "name": "Olivia Brown",
+            "position": "Programmer",
+            "slogan": "Ensuring performance and scalability in every component.",
+            "socialNetworks": [
+              {
+                "name": "Linkedin",
+                "url": "#"
+              },
+              {
+                "name": "Instagram",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "imageUrl": "https://avatars.githubusercontent.com/u/124599",
+            "name": "Ethan Smith",
+            "position": "Illustrator",
+            "slogan": "Transforming concepts into captivating visuals and graphics.",
+            "socialNetworks": [
+              {
+                "name": "Linkedin",
+                "url": "#"
+              },
+              {
+                "name": "Facebook",
+                "url": "#"
+              }
+            ]
+          }
+        ]
+      },
+      "sourceCode": "import { buttonVariants } from \"@/components/ui/button\";\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardDescription,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n} from \"@/components/ui/card\";\r\nimport { Facebook, Instagram, Linkedin } from \"lucide-react\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  promotitle: string;\r\n  description: string;\r\n  teamList: {\r\n    imageUrl: string;\r\n    name: string;\r\n    position: string;\r\n    slogan: string;\r\n    socialNetworks: { name: string; url: string }[];\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Meet Our\",\r\n  promotitle: \"Team\",\r\n  description:\r\n    \"The Buildy/UI team is dedicated to delivering exceptional UI components with a focus on modern frontend stacks and seamless developer experience.\",\r\n  teamList: [\r\n    {\r\n      imageUrl: \"https://avatars.githubusercontent.com/u/124599\",\r\n      name: \"Sophia Lee\",\r\n      position: \"UI/UX Designer\",\r\n      slogan: \"Crafting beautiful and functional designs for seamless user experiences.\",\r\n      socialNetworks: [\r\n        { name: \"Linkedin\", url: \"#\" },\r\n        { name: \"Facebook\", url: \"#\" },\r\n        { name: \"Instagram\", url: \"#\" },\r\n      ],\r\n    },\r\n    {\r\n      imageUrl: \"https://avatars.githubusercontent.com/u/124599\",\r\n      name: \"Daniel Chen\",\r\n      position: \"Frontend Developer\",\r\n      slogan: \"Bringing ideas to life with clean and efficient code.\",\r\n      socialNetworks: [\r\n        { name: \"Linkedin\", url: \"#\" },\r\n        { name: \"Facebook\", url: \"#\" },\r\n        { name: \"Instagram\", url: \"#\" },\r\n      ],\r\n    },\r\n    {\r\n      imageUrl: \"https://avatars.githubusercontent.com/u/124599\",\r\n      name: \"Olivia Brown\",\r\n      position: \"Programmer\",\r\n      slogan: \"Ensuring performance and scalability in every component.\",\r\n      socialNetworks: [\r\n        { name: \"Linkedin\", url: \"#\" },\r\n        { name: \"Instagram\", url: \"#\" },\r\n      ],\r\n    },\r\n    {\r\n      imageUrl: \"https://avatars.githubusercontent.com/u/124599\",\r\n      name: \"Ethan Smith\",\r\n      position: \"Illustrator\",\r\n      slogan: \"Transforming concepts into captivating visuals and graphics.\",\r\n      socialNetworks: [\r\n        { name: \"Linkedin\", url: \"#\" },\r\n        { name: \"Facebook\", url: \"#\" },\r\n      ],\r\n    },\r\n  ] as Content['teamList'],\r\n} as const;\r\n\r\ntype PromoTeamSectionProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoTeamSection = (props: PromoTeamSectionProps) => {\r\n  const { title, promotitle, description, teamList } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  const socialIcon = (iconName: string) => {\r\n    switch (iconName) {\r\n      case \"Linkedin\":\r\n        return <Linkedin size=\"20\" />;\r\n      case \"Facebook\":\r\n        return <Facebook size=\"20\" />;\r\n      case \"Instagram\":\r\n        return <Instagram size=\"20\" />;\r\n    }\r\n  };\r\n\r\n  return (\r\n    <section className=\"container mx-auto px-4 md:px-6 lg:px-8 py-16 lg:py-32\">\r\n      <header className=\"text-center space-y-4\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n          {title}{\" \"}\r\n          <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n          {promotitle}\r\n          </span>\r\n        </h2>\r\n        <p className=\"text-lg text-muted-foreground max-w-2xl mx-auto\">\r\n          {description}\r\n        </p>\r\n      </header>\r\n\r\n      <div className=\"grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24\">\r\n        {teamList?.map(({ imageUrl, name, position, slogan, socialNetworks }) => (\r\n          <div\r\n            key={name}\r\n            className=\"relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\"\r\n          >\r\n            <Card\r\n              className=\"bg-secondary h-full relative flex flex-col justify-center items-center rounded-2xl\"\r\n            >\r\n              <CardHeader className=\"mt-8 flex justify-center items-center pb-2\">\r\n                <img\r\n                  src={imageUrl}\r\n                  alt={`${name} - ${position}`}\r\n                  className=\"absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover\"\r\n                />\r\n                <CardTitle className=\"text-center text-xl font-semibold\">\r\n                  {name}\r\n                </CardTitle>\r\n                <CardDescription className=\"text-sm\">\r\n                  {position}\r\n                </CardDescription>\r\n              </CardHeader>\r\n\r\n              <CardContent className=\"text-center pb-2\">\r\n                <p>{slogan}</p>\r\n              </CardContent>\r\n\r\n              <CardFooter>\r\n                {socialNetworks.map(({ name, url }) => (\r\n                  <a\r\n                    key={name}\r\n                    href={url}\r\n                    rel=\"noreferrer noopener\"\r\n                    target=\"_blank\"\r\n                    className={buttonVariants({ variant: \"ghost\", size: \"sm\" })}\r\n                  >\r\n                    <span className=\"sr-only\">{name} icon</span>\r\n                    {socialIcon(name)}\r\n                  </a>\r\n                ))}\r\n              </CardFooter>\r\n            </Card>\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </section>\r\n  );\r\n};\r\n"
+    },
+    {
+      "name": "PromoServiceLottie",
+      "path": "src\\blocks\\promo\\PromoServiceLottie.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "lucide-react",
+          "@/components/ui/card",
+          "lottie-react",
+          "@/assets/lottie/promo.json"
+        ]
+      },
+      "content": {
+        "title": "Service",
+        "brand": "Buildy/UI",
+        "serviceList": [
+          {
+            "title": "Code Collaboration",
+            "description": "Seamlessly collaborate with your team using Buildy/UI's modern tools for sharing and reviewing code.",
+            "icon": {
+              "type": "Component",
+              "name": "ChartPie",
+              "props": {
+                "className": "w-6 h-6 text-white"
+              }
+            }
+          },
+          {
+            "title": "Project Management",
+            "description": "Simplify project tracking and enhance productivity with intuitive management features.",
+            "icon": {
+              "type": "Component",
+              "name": "WalletIcon",
+              "props": {
+                "className": "w-6 h-6 text-white"
+              }
+            }
+          },
+          {
+            "title": "Task Automation",
+            "description": "Automate repetitive tasks and save valuable time using Buildy/UI's flexible components.",
+            "icon": {
+              "type": "Component",
+              "name": "Magnet",
+              "props": {
+                "className": "w-6 h-6 text-white"
+              }
+            }
+          }
+        ]
+      },
+      "sourceCode": "import { ChartPie, WalletIcon, Magnet } from \"lucide-react\";\r\nimport { Card, CardHeader, CardTitle, CardDescription } from \"@/components/ui/card\";\r\nimport Lottie from \"lottie-react\";\r\nimport animationData from \"@/assets/lottie/promo.json\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  brand: string;\r\n  serviceList: {\r\n    title: string;\r\n    description: string;\r\n    icon: React.ReactNode;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Service\",\r\n  brand: \"Buildy/UI\",\r\n    serviceList: [\r\n  {\r\n    title: \"Code Collaboration\",\r\n    description:\r\n      \"Seamlessly collaborate with your team using Buildy/UI's modern tools for sharing and reviewing code.\",\r\n    icon: <ChartPie className=\"w-6 h-6 text-white\" />,\r\n  },\r\n  {\r\n    title: \"Project Management\",\r\n    description:\r\n      \"Simplify project tracking and enhance productivity with intuitive management features.\",\r\n    icon: <WalletIcon className=\"w-6 h-6 text-white\" />,\r\n  },\r\n  {\r\n    title: \"Task Automation\",\r\n    description:\r\n      \"Automate repetitive tasks and save valuable time using Buildy/UI's flexible components.\",\r\n    icon: <Magnet className=\"w-6 h-6 text-white\" />,\r\n  },\r\n]} as const;\r\n\r\ntype PromoServiceLottieProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoServiceLottie = (props: PromoServiceLottieProps) => {\r\n  const { title, brand, serviceList } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-8 lg:py-16\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8 grid lg:grid-cols-[1fr,1fr] gap-12 place-items-center\">\r\n        <div>\r\n          <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n            <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n              {title}\r\n            </span>\r\n            {brand}\r\n          </h2>\r\n\r\n          <p className=\"md:text-lg text-muted-foreground mt-4 mb-8\">\r\n            Discover how Buildy/UI can transform your design process with tools\r\n            tailored for efficiency and collaboration.\r\n          </p>\r\n\r\n          <div className=\"flex flex-col gap-6\">\r\n            {serviceList?.map(({ icon, title, description }) => (\r\n              <Card key={title} className=\"flex flex-col relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\">\r\n                <div className=\"bg-secondary rounded-2xl\">\r\n                <CardHeader className=\"space-y-1 flex md:flex-row justify-start items-start gap-4\">\r\n                  <div className=\"bg-gradient-to-b from-sky-500 to-sky-700 p-3 rounded-full\">{icon}</div>\r\n                  <div>\r\n                    <CardTitle className=\"font-bold\">\r\n                      {title}\r\n                    </CardTitle>\r\n                    <CardDescription className=\"text-sm mt-2\">\r\n                      {description}\r\n                    </CardDescription>\r\n                  </div>\r\n                </CardHeader>\r\n                </div>\r\n              </Card>\r\n            ))}\r\n          </div>\r\n        </div>\r\n\r\n        <div className=\"w-full max-w-md lg:max-w-lg\">\r\n          <Lottie animationData={animationData} loop={true} />\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};\r\n"
+    },
+    {
+      "name": "PromoHowItWorks",
+      "path": "src\\blocks\\promo\\PromoHowItWorks.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/components/ui/card",
+          "lucide-react"
+        ]
+      },
+      "content": {
+        "title": "How It",
+        "promotitle": "Works",
+        "description": "Discover how Buildy/UI simplifies UI development step-by-step with modern tools and minimalistic components.",
+        "features": [
+          {
+            "id": "accessibility",
+            "icon": {
+              "type": "Component",
+              "name": "HandHeart",
+              "props": {
+                "className": "w-16 h-16 stroke-1 text-sky-700"
+              }
+            },
+            "title": "Accessibility",
+            "description": "Ensure inclusive and user-friendly components accessible to all users."
+          },
+          {
+            "id": "community",
+            "icon": {
+              "type": "Component",
+              "name": "HeartHandshake",
+              "props": {
+                "className": "w-16 h-16 stroke-1 text-sky-700"
+              }
+            },
+            "title": "Community",
+            "description": "Leverage an active developer community contributing to continuous improvement."
+          },
+          {
+            "id": "scalability",
+            "icon": {
+              "type": "Component",
+              "name": "Handshake",
+              "props": {
+                "className": "w-16 h-16 stroke-1 text-sky-700"
+              }
+            },
+            "title": "Scalability",
+            "description": "Scale effortlessly with modular, reusable components built for growth."
+          },
+          {
+            "id": "design",
+            "icon": {
+              "type": "Component",
+              "name": "HandCoins",
+              "props": {
+                "className": "w-16 h-16 stroke-1 text-sky-700"
+              }
+            },
+            "title": "Consistency",
+            "description": "Achieve a cohesive design system tailored to your branding needs."
+          }
+        ]
+      },
+      "sourceCode": "import { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\r\nimport { HandHeart, Handshake, HeartHandshake, HandCoins } from \"lucide-react\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  promotitle: string;\r\n  description: string;\r\n  features: {\r\n    id: string;\r\n    icon: React.ReactNode;\r\n    title: string;\r\n    description: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"How It\",\r\n  promotitle: \"Works\",\r\n  description:\r\n    \"Discover how Buildy/UI simplifies UI development step-by-step with modern tools and minimalistic components.\",\r\n  features: [\r\n    {\r\n      id: \"accessibility\",\r\n      icon: <HandHeart className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Accessibility\",\r\n      description:\r\n        \"Ensure inclusive and user-friendly components accessible to all users.\",\r\n    },\r\n    {\r\n      id: \"community\",\r\n      icon: <HeartHandshake className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Community\",\r\n      description:\r\n        \"Leverage an active developer community contributing to continuous improvement.\",\r\n    },\r\n    {\r\n      id: \"scalability\",\r\n      icon: <Handshake className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Scalability\",\r\n      description:\r\n        \"Scale effortlessly with modular, reusable components built for growth.\",\r\n    },\r\n    {\r\n      id: \"design\",\r\n      icon: <HandCoins className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Consistency\",\r\n      description:\r\n        \"Achieve a cohesive design system tailored to your branding needs.\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype PromoHowItWorksProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoHowItWorks = (props: PromoHowItWorksProps) => {\r\n  const { title, promotitle, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8 text-center\">\r\n      <header className=\"space-y-4\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n          {title}{\" \"}\r\n          <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n          {promotitle}\r\n          </span>\r\n        </h2>\r\n        <p className=\"text-lg text-muted-foreground max-w-2xl mx-auto\">\r\n          {description}\r\n        </p>\r\n      </header>\r\n\r\n      <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8\">\r\n        {features?.map(({ id, icon, title, description }) => (\r\n          <Card key={id} className=\"relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\">\r\n            <div className=\"bg-secondary rounded-2xl h-full\">\r\n            <CardHeader>\r\n              <CardTitle className=\"grid gap-4 place-items-center\">\r\n                {icon}\r\n                <span className=\"text-xl font-semibold\">{title}</span>\r\n              </CardTitle>\r\n            </CardHeader>\r\n            <CardContent>\r\n              <p className=\"text-sm text-muted-foreground text-center\">\r\n                {description}\r\n              </p>\r\n            </CardContent>\r\n            </div>\r\n          </Card>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "PromoFeatureList",
+      "path": "src\\blocks\\promo\\PromoFeatureList.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/components/ui/badge",
+          "@/components/ui/card",
+          "@/assets/img/strategy.svg",
+          "@/assets/img/strategy.svg",
+          "@/assets/img/strategy.svg"
+        ]
+      },
+      "content": {
+        "promotitle": "Powerful",
+        "title": "Features",
+        "description": "Explore the core features of Buildy/UI designed to accelerate your development process and deliver seamless user experiences.",
+        "features": [
+          {
+            "title": "Responsive Design",
+            "description": "Create interfaces that adapt perfectly to any device with minimal effort.",
+            "image": "[Identifier]"
+          },
+          {
+            "title": "Intuitive User Interface",
+            "description": "Build clean, accessible, and intuitive interfaces with pre-designed components.",
+            "image": "[Identifier]"
+          },
+          {
+            "title": "AI-Powered Insights",
+            "description": "Enhance your workflow with intelligent suggestions and prebuilt patterns.",
+            "image": "[Identifier]"
+          }
+        ],
+        "featureList": [
+          "Dark/Light Theme",
+          "Reviews",
+          "Feature Highlights",
+          "Pricing",
+          "Contact Form",
+          "Our Team",
+          "Responsive Design",
+          "Newsletter",
+          "Minimalist Design"
+        ]
+      },
+      "sourceCode": "import { Badge } from \"@/components/ui/badge\";\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n} from \"@/components/ui/card\";\r\nimport responsiveImage from \"@/assets/img/strategy.svg\";\r\nimport intuitiveImage from \"@/assets/img/strategy.svg\";\r\nimport aiImage from \"@/assets/img/strategy.svg\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  promotitle: string;\r\n  description: string;\r\n  features: {\r\n    title: string;\r\n    description: string;\r\n    image: string;\r\n  }[];\r\n  featureList: string[];\r\n};\r\n\r\nconst content: Content = {\r\n  promotitle: \"Powerful\",\r\n  title: \"Features\",\r\n  description:\r\n    \"Explore the core features of Buildy/UI designed to accelerate your development process and deliver seamless user experiences.\",\r\n  features: [\r\n    {\r\n      title: \"Responsive Design\",\r\n      description:\r\n        \"Create interfaces that adapt perfectly to any device with minimal effort.\",\r\n      image: responsiveImage,\r\n    },\r\n    {\r\n      title: \"Intuitive User Interface\",\r\n      description:\r\n        \"Build clean, accessible, and intuitive interfaces with pre-designed components.\",\r\n      image: intuitiveImage,\r\n    },\r\n    {\r\n      title: \"AI-Powered Insights\",\r\n      description:\r\n        \"Enhance your workflow with intelligent suggestions and prebuilt patterns.\",\r\n      image: aiImage,\r\n    },\r\n  ] as Content['features'],\r\n  featureList: [\r\n    \"Dark/Light Theme\",\r\n    \"Reviews\",\r\n    \"Feature Highlights\",\r\n    \"Pricing\",\r\n    \"Contact Form\",\r\n    \"Our Team\",\r\n    \"Responsive Design\",\r\n    \"Newsletter\",\r\n    \"Minimalist Design\",\r\n  ],\r\n} as const;\r\n\r\ntype PromoFeatureListProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoFeatureList = (props: PromoFeatureListProps) => {\r\n  const { promotitle, title, description, features, featureList } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"container mx-auto px-4 md:px-6 lg:px-8 py-16 lg:py-32 space-y-8\">\r\n      <header className=\"flex flex-col items-center gap-4 text-center\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n          <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n          {promotitle}{\" \"}\r\n          </span>\r\n          {title}\r\n        </h2>\r\n        <p className=\"text-lg text-muted-foreground max-w-2xl\">\r\n          {description}\r\n        </p>\r\n      </header>\r\n\r\n      <div className=\"flex flex-wrap justify-center gap-4\">\r\n        {featureList?.map((feature) => (\r\n          <Badge key={feature} variant=\"secondary\" className=\"text-sm\">\r\n            {feature}\r\n          </Badge>\r\n        ))}\r\n      </div>\r\n\r\n      <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\">\r\n        {features?.map(({ title, description, image }) => (\r\n          <div\r\n            key={title}\r\n            className=\"relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\"\r\n          >\r\n          <Card className=\"flex flex-col bg-secondary h-full rounded-2xl\">\r\n            <CardHeader>\r\n              <CardTitle className=\"text-xl font-semibold\">{title}</CardTitle>\r\n            </CardHeader>\r\n            <CardContent>\r\n              <p className=\"text-muted-foreground text-sm\">{description}</p>\r\n            </CardContent>\r\n            <CardFooter className=\"pt-4\">\r\n              <img\r\n                src={image}\r\n                alt={title}\r\n                className=\"w-[150px] lg:w-[250px] mx-auto\"\r\n              />\r\n            </CardFooter>\r\n          </Card>\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "Statistics",
+      "path": "src\\blocks\\promo\\PromoAboutSection.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/assets/img/wireframe.svg"
+        ]
+      },
+      "content": {
+        "title": "About",
+        "brand": "Buildy/UI",
+        "description": "Buildy/UI empowers developers and designers to create scalable, flexible, and modern interfaces effortlessly. Designed with Radix and shadcn/ui, it simplifies prototyping and production-ready development for SaaS, marketing, and business applications.",
+        "imageAlt": "Wireframe showcase",
+        "statistics": [
+          {
+            "quantity": "10K+",
+            "description": "Theme Colors"
+          },
+          {
+            "quantity": "3K+",
+            "description": "UI/UX Variants"
+          },
+          {
+            "quantity": "50+",
+            "description": "Purity Components"
+          },
+          {
+            "quantity": "8",
+            "description": "Pretty Templates"
+          }
+        ]
+      },
+      "sourceCode": "import wireframe from \"@/assets/img/wireframe.svg\";\r\n\r\ntype Content = {\r\n  brand: string;\r\n  title: string;\r\n  description: string;\r\n  imageAlt: string;\r\n  statistics: {\r\n    quantity: string;\r\n    description: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"About\",\r\n  brand: \"Buildy/UI\",\r\n  description:\r\n    \"Buildy/UI empowers developers and designers to create scalable, flexible, and modern interfaces effortlessly. Designed with Radix and shadcn/ui, it simplifies prototyping and production-ready development for SaaS, marketing, and business applications.\",\r\n  imageAlt: \"Wireframe showcase\",\r\n  statistics: [\r\n    {\r\n      quantity: \"10K+\",\r\n      description: \"Theme Colors\",\r\n    },\r\n    {\r\n      quantity: \"3K+\",\r\n      description: \"UI/UX Variants\",\r\n    },\r\n    {\r\n      quantity: \"50+\",\r\n      description: \"Purity Components\",\r\n    },\r\n    {\r\n      quantity: \"8\",\r\n      description: \"Pretty Templates\",\r\n    },\r\n  ] as Content['statistics'],\r\n} as const;\r\n\r\ntype PromoAboutSectionProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoAboutSection = (props: PromoAboutSectionProps) => {\r\n  const { brand, title, description, imageAlt, statistics } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-8 lg:py-16\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n      <div className=\"relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\">\r\n        <div className=\"bg-secondary border rounded-2xl py-12\">\r\n            <div className=\"px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12\">\r\n            <img\r\n                src={wireframe}\r\n                alt={imageAlt}\r\n                className=\"w-[300px] object-contain\"\r\n            />\r\n            <div className=\"flex flex-col justify-between\">\r\n                <div className=\"pb-6\">\r\n                <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n                    <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n                    {title}\r\n                    </span>{\" \"}\r\n                    {brand}\r\n                </h2>\r\n                <p className=\"text-lg text-muted-foreground mt-4\">\r\n                    {description}\r\n                </p>\r\n                </div>\r\n                <Statistics statistics={statistics} />\r\n            </div>\r\n            </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};\r\n\r\nexport const Statistics = (props: { statistics: { quantity: string; description: string }[] }) => {\r\n  const { statistics } = props;\r\n  return (\r\n    <section id=\"statistics\">\r\n      <div className=\"grid grid-cols-2 lg:grid-cols-4 gap-8\">\r\n        {statistics?.map(({ quantity, description }) => (\r\n          <div key={description} className=\"space-y-2 text-center\">\r\n            <h2 className=\"text-3xl sm:text-4xl font-bold\">{quantity}</h2>\r\n            <p className=\"text-lg text-muted-foreground\">{description}</p>\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    }
+  ],
+  "generated": "2024-12-29T11:55:39.963Z"
+}

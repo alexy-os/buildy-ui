@@ -1,0 +1,369 @@
+{
+  "category": "features",
+  "components": [
+    {
+      "name": "FeaturesThreeColumnsIcons",
+      "path": "src\\blocks\\features\\FeaturesThreeColumnsIcons.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "lucide-react"
+        ]
+      },
+      "content": {
+        "title": "Flexible UI Development",
+        "description": "Create your website with our intuitive and customizable UI components",
+        "features": [
+          {
+            "title": "Quality",
+            "description": "We prioritize excellence and precision in all our offerings to ensure unparalleled user satisfaction.",
+            "icon": {
+              "type": "Component",
+              "name": "ZoomIn",
+              "props": {
+                "className": "w-4 h-4"
+              }
+            }
+          },
+          {
+            "title": "Experience",
+            "description": "Our seasoned team provides insights and expertise drawn from years of industry know-how.",
+            "icon": {
+              "type": "Component",
+              "name": "BarChartHorizontal",
+              "props": {
+                "className": "w-4 h-4"
+              }
+            }
+          },
+          {
+            "title": "Support",
+            "description": "Around-the-clock assistance to ensure your needs are met with urgency and attention.",
+            "icon": {
+              "type": "Component",
+              "name": "CircleHelp",
+              "props": {
+                "className": "w-4 h-4"
+              }
+            }
+          },
+          {
+            "title": "Innovation",
+            "description": "Driving progress through creativity and forward-thinking solutions.",
+            "icon": {
+              "type": "Component",
+              "name": "WandSparkles",
+              "props": {
+                "className": "w-4 h-4"
+              }
+            }
+          },
+          {
+            "title": "Results",
+            "description": "Focusing on delivering tangible outcomes that align with your goals.",
+            "icon": {
+              "type": "Component",
+              "name": "Layers",
+              "props": {
+                "className": "w-4 h-4"
+              }
+            }
+          },
+          {
+            "title": "Efficiency",
+            "description": "Streamlined processes that save you time and resources, boosting productivity.",
+            "icon": {
+              "type": "Component",
+              "name": "BatteryCharging",
+              "props": {
+                "className": "w-4 h-4"
+              }
+            }
+          }
+        ]
+      },
+      "sourceCode": "import {\r\n  BarChartHorizontal,\r\n  BatteryCharging,\r\n  CircleHelp,\r\n  Layers,\r\n  WandSparkles,\r\n  ZoomIn,\r\n} from 'lucide-react';\r\n\r\ntype Content = {\r\n  title: string;\r\n  description: string;\r\n  features: {\r\n    title: string;\r\n    description: string;\r\n    icon: React.ReactNode;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Flexible UI Development\",\r\n  description: \"Create your website with our intuitive and customizable UI components\",\r\n  features: [\r\n  {\r\n    title: 'Quality',\r\n    description:\r\n      'We prioritize excellence and precision in all our offerings to ensure unparalleled user satisfaction.',\r\n    icon: <ZoomIn className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Experience',\r\n    description:\r\n      'Our seasoned team provides insights and expertise drawn from years of industry know-how.',\r\n    icon: <BarChartHorizontal className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Support',\r\n    description:\r\n      'Around-the-clock assistance to ensure your needs are met with urgency and attention.',\r\n    icon: <CircleHelp className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Innovation',\r\n    description:\r\n      'Driving progress through creativity and forward-thinking solutions.',\r\n    icon: <WandSparkles className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Results',\r\n    description:\r\n      'Focusing on delivering tangible outcomes that align with your goals.',\r\n    icon: <Layers className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Efficiency',\r\n    description:\r\n      'Streamlined processes that save you time and resources, boosting productivity.',\r\n    icon: <BatteryCharging className=\"w-4 h-4\" />,\r\n  }\r\n]} as const;\r\n\r\ntype FeaturesThreeColumnsIconsProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesThreeColumnsIcons = (props: FeaturesThreeColumnsIconsProps) => {\r\n  const { title, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"mb-10 md:mb-20\">\r\n          <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold mb-6\">{title}</h2>\r\n          <p className=\"text-lg text-muted-foreground max-w-2xl text-left mb-12\">{description}</p>\r\n        </div>\r\n      <div className=\"grid gap-10 md:grid-cols-2 lg:grid-cols-3\">\r\n        {features?.map((feature, id) => (\r\n          <div key={`${feature.title}-${id}`} className=\"flex flex-col\">\r\n            <div className=\"mb-5 flex size-12 items-center justify-center rounded-full bg-accent\">\r\n              {feature.icon}\r\n            </div>\r\n            <h3 className=\"mb-2 text-xl font-semibold\">{feature.title}</h3>\r\n            <p className=\"text-muted-foreground\">{feature.description}</p>\r\n          </div>\r\n        ))}\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "FeaturesThreeColumns",
+      "path": "src\\blocks\\features\\FeaturesThreeColumns.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "lucide-react"
+        ]
+      },
+      "content": {
+        "title": "Effortless Prototyping and Flexible UI Development",
+        "description": "Simplify your business with our intuitive and customizable UI components.",
+        "features": [
+          {
+            "id": "feature-1",
+            "icon": {
+              "type": "Component",
+              "name": "Check",
+              "props": {
+                "className": "w-4 h-4 mt-2 text-primary"
+              }
+            },
+            "title": "Modular Design",
+            "description": "Create custom layouts using our grid system and responsive classes."
+          },
+          {
+            "id": "feature-2",
+            "icon": {
+              "type": "Component",
+              "name": "Check",
+              "props": {
+                "className": "w-4 h-4 mt-2 text-primary"
+              }
+            },
+            "title": "Theming Flexibility",
+            "description": "Easily customize colors, fonts, and spacing to match your brand identity."
+          },
+          {
+            "id": "feature-3",
+            "icon": {
+              "type": "Component",
+              "name": "Check",
+              "props": {
+                "className": "w-4 h-4 mt-2 text-primary"
+              }
+            },
+            "title": "Component Library",
+            "description": "Access a comprehensive set of pre-built UI components for rapid development."
+          },
+          {
+            "id": "feature-4",
+            "icon": {
+              "type": "Component",
+              "name": "Check",
+              "props": {
+                "className": "w-4 h-4 mt-2 text-primary"
+              }
+            },
+            "title": "Dark Mode Support",
+            "description": "Provide users with comfortable viewing options through built-in dark mode functionality."
+          },
+          {
+            "id": "feature-5",
+            "icon": {
+              "type": "Component",
+              "name": "Check",
+              "props": {
+                "className": "w-4 h-4 mt-2 text-primary"
+              }
+            },
+            "title": "Accessibility",
+            "description": "Ensure inclusivity with semantic HTML and ARIA attributes for all components."
+          },
+          {
+            "id": "feature-6",
+            "icon": {
+              "type": "Component",
+              "name": "Check",
+              "props": {
+                "className": "w-4 h-4 mt-2 text-primary"
+              }
+            },
+            "title": "Performance Optimization",
+            "description": "Leverage Tailwind CSS for efficient rendering and reduced bundle size."
+          }
+        ]
+      },
+      "sourceCode": "import { Check } from \"lucide-react\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  description: string;\r\n  features: {\r\n    id: string;\r\n    icon: React.ReactNode;\r\n    title: string;\r\n    description: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Effortless Prototyping and Flexible UI Development\",\r\n  description: \"Simplify your business with our intuitive and customizable UI components.\",\r\n  features: [\r\n    {\r\n      id: \"feature-1\",\r\n      icon: <Check className=\"w-4 h-4 mt-2 text-primary\" />,\r\n      title: \"Modular Design\",\r\n      description: \"Create custom layouts using our grid system and responsive classes.\"\r\n    },\r\n    {\r\n      id: \"feature-2\",\r\n      icon: <Check className=\"w-4 h-4 mt-2 text-primary\" />,\r\n      title: \"Theming Flexibility\",\r\n      description: \"Easily customize colors, fonts, and spacing to match your brand identity.\"\r\n    },\r\n    {\r\n      id: \"feature-3\",\r\n      icon: <Check className=\"w-4 h-4 mt-2 text-primary\" />,\r\n      title: \"Component Library\",\r\n      description: \"Access a comprehensive set of pre-built UI components for rapid development.\"\r\n    },\r\n    {\r\n      id: \"feature-4\",\r\n      icon: <Check className=\"w-4 h-4 mt-2 text-primary\" />,\r\n      title: \"Dark Mode Support\",\r\n      description: \"Provide users with comfortable viewing options through built-in dark mode functionality.\"\r\n    },\r\n    {\r\n      id: \"feature-5\",\r\n      icon: <Check className=\"w-4 h-4 mt-2 text-primary\" />,\r\n      title: \"Accessibility\",\r\n      description: \"Ensure inclusivity with semantic HTML and ARIA attributes for all components.\"\r\n    },\r\n    {\r\n      id: \"feature-6\",\r\n      icon: <Check className=\"w-4 h-4 mt-2 text-primary\" />,\r\n      title: \"Performance Optimization\",\r\n      description: \"Leverage Tailwind CSS for efficient rendering and reduced bundle size.\"\r\n    }\r\n  ]\r\n} as const;\r\n\r\ntype FeaturesThreeColumnsProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesThreeColumns = (props: FeaturesThreeColumnsProps) => {\r\n  const { title, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n      <div className=\"flex gap-2 flex-col\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold mb-6\">{title}</h2>\r\n        <p className=\"text-lg text-muted-foreground max-w-2xl text-left mb-12\">{description}</p>\r\n      </div>\r\n      <div className=\"flex gap-10 pt-12 flex-col w-full\">\r\n        <div className=\"grid grid-cols-2 items-start lg:grid-cols-3 gap-10\">\r\n          {features?.map((feature) => (\r\n            <div key={feature.id} className=\"flex flex-row gap-6 w-full items-start\">\r\n              <Check className=\"w-4 h-4 mt-2 text-primary\" />\r\n              <div className=\"flex flex-col gap-1\">\r\n                <p className=\"font-semibold\">{feature.title}</p>\r\n                <p className=\"text-sm text-muted-foreground\">\r\n                  {feature.description}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          ))}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "FeaturesSplitMedia",
+      "path": "src\\blocks\\features\\FeaturesSplitMedia.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "lucide-react",
+          "@/components/ui/badge"
+        ]
+      },
+      "content": {
+        "badge": "Open Source",
+        "title": "Beautiful Components for Your Next Project",
+        "description": "Elevate your application with stunning, customizable UI elements built with Radix UI and Tailwind CSS.",
+        "features": [
+          {
+            "title": "Radix UI Integration",
+            "description": "Harness the power of Radix UI's robust component library for seamless integration into your project."
+          },
+          {
+            "title": "Tailwind CSS Styling",
+            "description": "Utilize Tailwind CSS for effortless customization and rapid development of your UI components."
+          },
+          {
+            "title": "Free and Open Source",
+            "description": "Access these beautifully crafted components absolutely free, perfect for both personal and commercial projects."
+          }
+        ]
+      },
+      "sourceCode": "import { Check } from \"lucide-react\";\r\nimport { Badge } from \"@/components/ui/badge\";\r\n\r\ntype Content = {\r\n  badge: string;\r\n  title: string;\r\n  description: string;\r\n  features: {\r\n    title: string;\r\n    description: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  badge: \"Open Source\",\r\n  title: \"Beautiful Components for Your Next Project\",\r\n  description: \"Elevate your application with stunning, customizable UI elements built with Radix UI and Tailwind CSS.\",\r\n  features: [\r\n    {\r\n      title: \"Radix UI Integration\",\r\n      description: \"Harness the power of Radix UI's robust component library for seamless integration into your project.\",\r\n    },\r\n    {\r\n      title: \"Tailwind CSS Styling\",\r\n      description: \"Utilize Tailwind CSS for effortless customization and rapid development of your UI components.\",\r\n    },\r\n    {\r\n      title: \"Free and Open Source\",\r\n      description: \"Access these beautifully crafted components absolutely free, perfect for both personal and commercial projects.\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype FeaturesSplitMediaProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesSplitMedia = (props: FeaturesSplitMediaProps) => {\r\n  const { badge, title, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n      <div className=\"grid grid-cols-1 gap-8 items-center lg:grid-cols-2\">\r\n        <div className=\"flex gap-2 flex-col\">\r\n          <div className=\"flex gap-4 flex-col\">\r\n            <div>\r\n              <Badge variant=\"outline\">{badge}</Badge>\r\n            </div>\r\n            <div className=\"flex gap-2 flex-col\">\r\n              <h2 className=\"max-w-2xl text-3xl md:text-4xl lg:text-5xl font-bold text-left\">\r\n                {title}\r\n              </h2>\r\n              <p className=\"text-lg text-muted-foreground max-w-2xl text-left\">\r\n                {description}\r\n              </p>\r\n            </div>\r\n          </div>\r\n          <div className=\"grid lg:pl-4 grid-cols-1 sm:grid-cols-3 items-start lg:grid-cols-1 gap-4\">\r\n            {features?.map((feature, index) => (\r\n              <div key={`${feature.title}-${index}`} className=\"flex flex-row gap-4 items-start\">\r\n                <Check className=\"w-4 h-4 mt-2 text-primary\" />\r\n                <div className=\"flex flex-col gap-2\">\r\n                  <p>{feature.title}</p>\r\n                  <p className=\"text-muted-foreground text-sm\">\r\n                    {feature.description}\r\n                  </p>\r\n                </div>\r\n              </div>\r\n            ))}\r\n          </div>\r\n        </div>\r\n        <div className=\"bg-muted rounded-md aspect-square\"></div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "FeaturesSplitLeftMedia",
+      "path": "src\\blocks\\features\\FeaturesSplitLeftMedia.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "lucide-react",
+          "@/components/ui/badge"
+        ]
+      },
+      "content": {
+        "badge": "Premium",
+        "title": "Introducing Our Latest Product!",
+        "description": "Experience cutting-edge technology designed to boost your online presence and drive conversions.",
+        "features": [
+          {
+            "title": "Conversion Optimised",
+            "description": "Our solution is built to increase your website's conversion rates and improve user engagement."
+          },
+          {
+            "title": "Customisable Templates",
+            "description": "Choose from a variety of pre-designed templates that can be easily customised to match your brand."
+          },
+          {
+            "title": "A/B Testing Capabilities",
+            "description": "Implement and analyse A/B tests directly within our components for data-driven decision making."
+          }
+        ]
+      },
+      "sourceCode": "import { Check } from \"lucide-react\";\r\nimport { Badge } from \"@/components/ui/badge\";\r\n\r\ntype Content = {\r\n  badge: string;\r\n  title: string;\r\n  description: string;\r\n  features: {\r\n    title: string;\r\n    description: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  badge: \"Premium\",\r\n  title: \"Introducing Our Latest Product!\",\r\n  description: \"Experience cutting-edge technology designed to boost your online presence and drive conversions.\",\r\n  features: [\r\n    {\r\n      title: \"Conversion Optimised\",\r\n      description: \"Our solution is built to increase your website's conversion rates and improve user engagement.\",\r\n    },\r\n    {\r\n      title: \"Customisable Templates\",\r\n      description: \"Choose from a variety of pre-designed templates that can be easily customised to match your brand.\",\r\n    },\r\n    {\r\n      title: \"A/B Testing Capabilities\",\r\n      description: \"Implement and analyse A/B tests directly within our components for data-driven decision making.\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype FeaturesSplitLeftMediaProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesSplitLeftMedia = (props: FeaturesSplitLeftMediaProps) => {\r\n  const { badge, title, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"grid grid-cols-1 gap-8 items-center lg:grid-cols-2\">\r\n        <div className=\"bg-muted rounded-md aspect-square\"></div>\r\n        <div className=\"flex gap-2 flex-col\">\r\n          <div className=\"flex gap-4 flex-col\">\r\n            <div>\r\n              <Badge variant=\"outline\">{badge}</Badge>\r\n            </div>\r\n            <div className=\"flex gap-2 flex-col\">\r\n              <h2 className=\"max-w-2xl text-3xl md:text-4xl lg:text-5xl font-bold text-left\">\r\n                {title}\r\n              </h2>\r\n              <p className=\"text-lg text-muted-foreground max-w-2xl text-left\">\r\n                {description}\r\n              </p>\r\n            </div>\r\n          </div>\r\n          <div className=\"grid lg:pl-4 grid-cols-1 sm:grid-cols-3 items-start lg:grid-cols-1 gap-4\">\r\n            {features?.map((feature, index) => (\r\n              <div key={`${feature.title}-${index}`} className=\"flex flex-row gap-4 items-start\">\r\n                <Check className=\"w-4 h-4 mt-2 text-primary\" />\r\n                <div className=\"flex flex-col gap-2\">\r\n                  <p>{feature.title}</p>\r\n                  <p className=\"text-muted-foreground text-sm\">\r\n                    {feature.description}\r\n                  </p>\r\n                </div>\r\n              </div>\r\n            ))}\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "FeaturesSplitCarousel",
+      "path": "src\\blocks\\features\\FeaturesSplitCarousel.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/components/ui/badge",
+          "@/components/ui/carousel"
+        ]
+      },
+      "content": {
+        "badge": "Design System",
+        "title": "Discover Endless Possibilities with Buildy/UI",
+        "description": "Empower your projects with versatile and innovative solutions. Streamline your business operations with our user-friendly design system.",
+        "carouselItems": [
+          {
+            "id": "item1",
+            "label": "Possibilities with Buildy/UI"
+          },
+          {
+            "id": "item2",
+            "label": "Shadcn Library Integration"
+          },
+          {
+            "id": "item3",
+            "label": "User-friendly UI/UX"
+          },
+          {
+            "id": "item4",
+            "label": "Dark Mode Support Default"
+          },
+          {
+            "id": "item5",
+            "label": "Innovate Your Brand!"
+          }
+        ]
+      },
+      "sourceCode": "import { Badge } from \"@/components/ui/badge\";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from \"@/components/ui/carousel\";\r\n\r\ntype Content = {\r\n  badge: string;\r\n  title: string;\r\n  description: string;\r\n  carouselItems: { id: string; label: string }[];\r\n};\r\n\r\nconst content: Content = {\r\n  badge: \"Design System\",\r\n  title: \"Discover Endless Possibilities with Buildy/UI\",\r\n  description:\r\n    \"Empower your projects with versatile and innovative solutions. Streamline your business operations with our user-friendly design system.\",\r\n  carouselItems: [\r\n    { id: \"item1\", label: \"Possibilities with Buildy/UI\" },\r\n    { id: \"item2\", label: \"Shadcn Library Integration\" },\r\n    { id: \"item3\", label: \"User-friendly UI/UX\" },\r\n    { id: \"item4\", label: \"Dark Mode Support Default\" },\r\n    { id: \"item5\", label: \"Innovate Your Brand!\" },\r\n  ],\r\n} as const;\r\n\r\ntype FeaturesSplitCarouselProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesSplitCarousel = (props: FeaturesSplitCarouselProps) => {\r\n  const { badge, title, description, carouselItems } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-10 items-end\">\r\n        <header className=\"flex flex-col gap-4 items-start\">\r\n          <Badge variant=\"outline\" className=\"rounded-full h-7\">\r\n            {badge}\r\n          </Badge>\r\n          <div className=\"flex flex-col gap-2\">\r\n            <h2 className=\"text-3xl md:text-4xl lg:text-6xl font-bold max-w-xl\">\r\n              {title}\r\n            </h2>\r\n            <p className=\"text-lg text-muted-foreground max-w-2xl\">\r\n              {description}\r\n            </p>\r\n          </div>\r\n        </header>\r\n        <div className=\"w-full max-w-full px-4 md:px-6 lg:px-8\">\r\n        <Carousel\r\n            opts={{\r\n                align: \"start\",\r\n                loop: true,\r\n            }}\r\n            >\r\n            <CarouselContent>\r\n              {carouselItems?.map((item) => (\r\n                <CarouselItem key={item.id}>\r\n                  <div className=\"flex rounded aspect-video bg-muted items-center justify-center\">\r\n                    <span className=\"text-sm\">{item.label}</span>\r\n                  </div>\r\n                </CarouselItem>\r\n              ))}\r\n            </CarouselContent>\r\n            <CarouselPrevious />\r\n            <CarouselNext />\r\n          </Carousel>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "FeaturesGridMediaCards",
+      "path": "src\\blocks\\features\\FeaturesGridMediaCards.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "@/components/ui/badge"
+        ]
+      },
+      "content": {
+        "badge": "Marketing & Design",
+        "title": "Innovate Your Brand!",
+        "description": "Crafting remarkable experiences in UI/UX for your business.",
+        "features": [
+          {
+            "id": "uiux1",
+            "title": "User-Centric Design",
+            "description": "Deliver intuitive and engaging interfaces that resonate with your target audience."
+          },
+          {
+            "id": "marketing1",
+            "title": "Strategic Branding",
+            "description": "Elevate your brand identity and ensure a consistent message across all platforms."
+          },
+          {
+            "id": "shadcn1",
+            "title": "Shadcn Library Integration",
+            "description": "Seamlessly blend components for a cohesive and modern design aesthetic."
+          }
+        ]
+      },
+      "sourceCode": "import { Badge } from \"@/components/ui/badge\";\r\n\r\ntype Content = {\r\n  badge: string;\r\n  title: string;\r\n  description: string;\r\n  features: {\r\n    id: string;\r\n    title: string;\r\n    description: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  badge: \"Marketing & Design\",\r\n  title: \"Innovate Your Brand!\",\r\n  description: \"Crafting remarkable experiences in UI/UX for your business.\",\r\n  features: [\r\n    {\r\n      id: \"uiux1\",\r\n      title: \"User-Centric Design\",\r\n      description: \"Deliver intuitive and engaging interfaces that resonate with your target audience.\"\r\n    },\r\n    {\r\n      id: \"marketing1\",\r\n      title: \"Strategic Branding\",\r\n      description: \"Elevate your brand identity and ensure a consistent message across all platforms.\"\r\n    },\r\n    {\r\n      id: \"shadcn1\",\r\n      title: \"Shadcn Library Integration\",\r\n      description: \"Seamlessly blend components for a cohesive and modern design aesthetic.\"\r\n    }\r\n  ]\r\n} as const;\r\n\r\ntype FeaturesGridMediaCardsProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesGridMediaCards = (props: FeaturesGridMediaCardsProps) => {\r\n  const { badge, title, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n      <div className=\"flex flex-col gap-10\">\r\n        <div className=\"flex gap-4 flex-col features-start\">\r\n          <div>\r\n            <Badge>{badge}</Badge>\r\n          </div>\r\n          <div className=\"flex gap-2 flex-col\">\r\n            <h2 className={`text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left`}>\r\n              {title}\r\n            </h2>\r\n            <p className={`text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-muted-foreground text-left`}>\r\n              {description}\r\n            </p>\r\n          </div>\r\n        </div>\r\n        <div className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8\">\r\n          {features?.map((feature) => (\r\n            <div key={feature.id} className=\"flex flex-col gap-2\">\r\n              <div className=\"bg-muted rounded-md aspect-video mb-2\"></div>\r\n              <h3 className=\"text-xl tracking-tight\">{feature.title}</h3>\r\n              <p className=\"text-muted-foreground text-base\">{feature.description}</p>\r\n            </div>\r\n          ))}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    },
+    {
+      "name": "FAQContentSection",
+      "path": "src\\blocks\\features\\FAQContentSection.tsx",
+      "dependencies": {
+        "imports": [],
+        "packages": [
+          "lucide-react",
+          "@/components/ui/badge",
+          "@/components/ui/accordion",
+          "@/components/ui/button"
+        ]
+      },
+      "content": {
+        "badge": "FAQ",
+        "title": "Why Choose shadcn/ui?",
+        "description": "Discover the reasons why shadcn/ui is the ideal choice for modern, flexible, and accessible UI components, empowering developers to build faster and smarter.",
+        "button": {
+          "text": "Any questions?",
+          "variant": "default",
+          "icon": {
+            "type": "Component",
+            "name": "Send",
+            "props": {
+              "className": "w-4 h-4"
+            }
+          }
+        },
+        "faqs": [
+          {
+            "id": "faq1",
+            "question": "What makes shadcn/ui unique?",
+            "answer": "shadcn/ui leverages the power of Radix UI and Tailwind CSS to provide accessible, customizable, and modular components for rapid development."
+          },
+          {
+            "id": "faq2",
+            "question": "Is shadcn/ui suitable for production?",
+            "answer": "Absolutely. With a focus on accessibility, performance, and customization, shadcn/ui is designed for production-ready applications."
+          },
+          {
+            "id": "faq3",
+            "question": "How does it integrate with Tailwind CSS?",
+            "answer": "shadcn/ui components come with pre-built Tailwind CSS classes, making customization and theming effortless for developers."
+          },
+          {
+            "id": "faq4",
+            "question": "Is it open source?",
+            "answer": "Yes! shadcn/ui is completely open source, offering developers the freedom to use and adapt components in any project."
+          },
+          {
+            "id": "faq5",
+            "question": "What kind of support is available?",
+            "answer": "shadcn/ui has comprehensive documentation and an active community to assist developers with any challenges."
+          }
+        ]
+      },
+      "sourceCode": "import { Send } from \"lucide-react\";\r\nimport { Badge } from \"@/components/ui/badge\";\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from \"@/components/ui/accordion\";\r\nimport { Button, type ButtonProps } from \"@/components/ui/button\";\r\n\r\ntype Content = {\r\n  badge: string;\r\n  title: string;\r\n  description: string;\r\n  button: {\r\n    text: string;\r\n    variant: ButtonProps[\"variant\"];\r\n    icon: React.ReactNode;\r\n  };\r\n  faqs: {\r\n    id: string;\r\n    question: string;\r\n    answer: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  badge: \"FAQ\",\r\n  title: \"Why Choose shadcn/ui?\",\r\n  description:\r\n    \"Discover the reasons why shadcn/ui is the ideal choice for modern, flexible, and accessible UI components, empowering developers to build faster and smarter.\",\r\n  button: {\r\n    text: \"Any questions?\",\r\n    variant: \"default\",\r\n    icon: <Send className=\"w-4 h-4\" />\r\n  },\r\n  faqs: [\r\n    {\r\n      id: \"faq1\",\r\n      question: \"What makes shadcn/ui unique?\",\r\n      answer:\r\n        \"shadcn/ui leverages the power of Radix UI and Tailwind CSS to provide accessible, customizable, and modular components for rapid development.\",\r\n    },\r\n    {\r\n      id: \"faq2\",\r\n      question: \"Is shadcn/ui suitable for production?\",\r\n      answer:\r\n        \"Absolutely. With a focus on accessibility, performance, and customization, shadcn/ui is designed for production-ready applications.\",\r\n    },\r\n    {\r\n      id: \"faq3\",\r\n      question: \"How does it integrate with Tailwind CSS?\",\r\n      answer:\r\n        \"shadcn/ui components come with pre-built Tailwind CSS classes, making customization and theming effortless for developers.\",\r\n    },\r\n    {\r\n      id: \"faq4\",\r\n      question: \"Is it open source?\",\r\n      answer:\r\n        \"Yes! shadcn/ui is completely open source, offering developers the freedom to use and adapt components in any project.\",\r\n    },\r\n    {\r\n      id: \"faq5\",\r\n      question: \"What kind of support is available?\",\r\n      answer:\r\n        \"shadcn/ui has comprehensive documentation and an active community to assist developers with any challenges.\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype FAQContentSectionProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>\r\n\r\nexport const FAQContentSection = (props: FAQContentSectionProps) => {\r\n  const { badge, title, description, button, faqs } = {\r\n    ...content,\r\n    ...props\r\n  }\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"grid lg:grid-cols-2 gap-10\">\r\n          <div className=\"flex flex-col gap-6\">\r\n            <header className=\"flex flex-col gap-4\">\r\n              <div>\r\n                <Badge variant=\"outline\">{badge}</Badge>\r\n              </div>\r\n              <h4 className=\"text-3xl md:text-4xl lg:text-6xl font-bold max-w-xl\">\r\n                {title}\r\n              </h4>\r\n              <p className=\"text-lg text-muted-foreground max-w-2xl\">\r\n                {description}\r\n              </p>\r\n            </header>\r\n            <Button variant={button.variant} className=\"gap-4 w-fit\">\r\n              {button.text} {button.icon}\r\n            </Button>\r\n          </div>\r\n          <Accordion type=\"single\" collapsible className=\"w-full\">\r\n            {faqs.map(({ id, question, answer }) => (\r\n              <AccordionItem key={id} value={id}>\r\n                <AccordionTrigger className=\"font-bold text-muted-foreground\">{question}</AccordionTrigger>\r\n                <AccordionContent>{answer}</AccordionContent>\r\n              </AccordionItem>\r\n            ))}\r\n          </Accordion>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};"
+    }
+  ],
+  "generated": "2024-12-29T11:55:39.981Z"
+}
