@@ -18,14 +18,6 @@ export class ComponentMapper {
     }
   }
 
-  private stringifyContent(content: any): string {
-    return JSON.stringify(content, null, 2)
-      .replace(/\\/g, '\\\\')
-      .replace(/\n/g, '\\n')
-      .replace(/\r/g, '\\r')
-      .replace(/\t/g, '\\t');
-  }
-
   private formatComponentData(component: ComponentInfo) {
     return {
       name: component.name,
@@ -37,15 +29,15 @@ export class ComponentMapper {
   }
 
   private getCategoryFromPath(filePath: string): string {
-    // Нормализуем путь для кроссплатформенности
+    
     const normalizedPath = filePath.replace(/\\/g, '/');
-    // Извлекаем части пути
+    
     const parts = normalizedPath.split('/');
-    // Ищем индекс 'blocks'
+    
     const blocksIndex = parts.indexOf('blocks');
     
     if (blocksIndex !== -1 && blocksIndex + 1 < parts.length) {
-      // Возвращаем следующую часть после 'blocks'
+        
       return parts[blocksIndex + 1];
     }
     
@@ -56,7 +48,7 @@ export class ComponentMapper {
     const categories: Record<string, any[]> = {};
     
     components.forEach(component => {
-      // Используем новый метод для получения категории
+        
       const category = this.getCategoryFromPath(component.path);
       
       if (!categories[category]) {
@@ -78,7 +70,6 @@ export class ComponentMapper {
 
       const categorizedComponents = this.categorizeComponents(components);
 
-      // Создаем основную карту
       const componentMap = {
         generated: new Date().toISOString(),
         totalComponents: components.length,
@@ -87,7 +78,6 @@ export class ComponentMapper {
 
       this.saveMapToFile('component-map.json', componentMap);
 
-      // Создаем отдельные файлы для каждой категории
       Object.entries(categorizedComponents).forEach(([category, components]) => {
         this.saveMapToFile(`${category}-components.json`, {
           category,
@@ -114,4 +104,4 @@ export class ComponentMapper {
       console.error(`❌ Error saving file ${filename}:`, error);
     }
   }
-} 
+}

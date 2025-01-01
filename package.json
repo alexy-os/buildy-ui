@@ -13,13 +13,18 @@
     "scripts": {
         "build": "bun build src/index.ts --outdir dist --target bun",
         "analyze": "bun run src/scripts/analyzeComponents.ts",
-        "generate": "bun run src/scripts/generateComponentMap.ts"
+        "generate": "bun run src/scripts/generateComponentMap.ts",
+        "list": "bun run src/scripts/generateComponentsList.ts",
+        "qdrant": "bun run src/scripts/generateComponentsQDrant.ts",
+        "vector": "bun run src/scripts/generateEmbedding.ts"
     },
     "devDependencies": {
         "@babel/parser": "^7.26.3",
         "@babel/traverse": "^7.26.4",
         "@types/babel__traverse": "^7.20.6",
         "@types/glob": "^8.1.0",
-        "glob": "^11.0.0"
+        "glob": "^11.0.0",
+        "openai": "^4.77.0",
+        "typescript": "^5.7.2"
     }
 }

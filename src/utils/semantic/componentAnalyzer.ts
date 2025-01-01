@@ -3,19 +3,29 @@ import { parse } from '@babel/parser';
 import traverse from '@babel/traverse';
 import { glob } from 'glob';
 import * as t from '@babel/types';
+import { SemanticAnalyzer } from './SemanticAnalyzer';
+import { SemanticStructure } from './types';
 
-export type ComponentInfo = {
+export interface ComponentInfo {
   name: string;
   path: string;
   dependencies: {
     imports: string[];
     packages: string[];
   };
-  content?: Record<string, any>;
-  sourceCode?: string;
+  content: any;
+  sourceCode: string;
+  semanticStructure: SemanticStructure;
+  llmSource: string;
 }
 
 export class ComponentAnalyzer {
+  private semanticAnalyzer: SemanticAnalyzer;
+
+  constructor() {
+    this.semanticAnalyzer = new SemanticAnalyzer();
+  }
+
   // Get all component files
   async getComponentFiles(pattern: string): Promise<string[]> {
     return glob(pattern);
@@ -118,7 +128,7 @@ export class ComponentAnalyzer {
       sourceType: 'module',
       plugins: ['typescript', 'jsx']
     });
-
+    
     const componentInfo: ComponentInfo = {
       name: '',
       path: filePath,
@@ -126,14 +136,20 @@ export class ComponentAnalyzer {
         imports: [],
         packages: []
       },
-      sourceCode: code
+      content: undefined,
+      sourceCode: code,
+      semanticStructure: {
+        layout: { type: '', sections: [], spacing: [] },
+        elements: { primary: [], secondary: [], media: [] },
+        interactivity: { forms: [], buttons: [], navigation: [] }
+      },
+      llmSource: ''
     };
     
     const extractValueFromNode = this.extractValueFromNode.bind(this);
 
     // Traverse AST
     traverse(ast, {
-      // Get imports
       ImportDeclaration(path) {
         const importPath = path.node.source.value;
         if (importPath.startsWith('.')) {
@@ -143,10 +159,8 @@ export class ComponentAnalyzer {
         }
       },
 
-      // Get content variable
       VariableDeclarator(path) {
         const id = path.node.id;
-        // Check if id is Identifier
         if ('name' in id && id.name === 'content') {
           try {
             componentInfo.content = path.node.init 
@@ -158,7 +172,6 @@ export class ComponentAnalyzer {
         }
       },
 
-      // Get component name
       ExportNamedDeclaration(path) {
         if (path.node.declaration?.type === 'VariableDeclaration') {
           const declaration = path.node.declaration.declarations[0];
@@ -169,6 +182,39 @@ export class ComponentAnalyzer {
         }
       }
     });
+    
+    traverse(ast, {
+      JSXElement: (path) => {
+        const elementStructure = this.semanticAnalyzer.analyzeElement(path.node);
+
+        componentInfo.semanticStructure.layout.type = elementStructure.layout.type || componentInfo.semanticStructure.layout.type;
+        componentInfo.semanticStructure.layout.sections.push(...elementStructure.layout.sections);
+        componentInfo.semanticStructure.layout.spacing.push(...elementStructure.layout.spacing);
+        
+        componentInfo.semanticStructure.elements.primary.push(...elementStructure.elements.primary);
+        componentInfo.semanticStructure.elements.secondary.push(...elementStructure.elements.secondary);
+        componentInfo.semanticStructure.elements.media.push(...elementStructure.elements.media);
+        
+        componentInfo.semanticStructure.interactivity.forms.push(...elementStructure.interactivity.forms);
+        componentInfo.semanticStructure.interactivity.buttons.push(...elementStructure.interactivity.buttons);
+        componentInfo.semanticStructure.interactivity.navigation.push(...elementStructure.interactivity.navigation);
+      }
+    });
+    
+    componentInfo.semanticStructure.layout.sections = [...new Set(componentInfo.semanticStructure.layout.sections)];
+    componentInfo.semanticStructure.layout.spacing = [...new Set(componentInfo.semanticStructure.layout.spacing)];
+    componentInfo.semanticStructure.elements.primary = [...new Set(componentInfo.semanticStructure.elements.primary)];
+    componentInfo.semanticStructure.elements.secondary = [...new Set(componentInfo.semanticStructure.elements.secondary)];
+    componentInfo.semanticStructure.elements.media = [...new Set(componentInfo.semanticStructure.elements.media)];
+    componentInfo.semanticStructure.interactivity.forms = [...new Set(componentInfo.semanticStructure.interactivity.forms)];
+    componentInfo.semanticStructure.interactivity.buttons = [...new Set(componentInfo.semanticStructure.interactivity.buttons)];
+    componentInfo.semanticStructure.interactivity.navigation = [...new Set(componentInfo.semanticStructure.interactivity.navigation)];
+
+    componentInfo.llmSource = this.semanticAnalyzer.generateLLMSource(
+      componentInfo.name,
+      componentInfo.semanticStructure,
+      componentInfo.content
+    );
 
     return componentInfo;
   }
