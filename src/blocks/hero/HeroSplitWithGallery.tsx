@@ -1,6 +1,16 @@
+import { cn } from "@workspace/ui/lib/utils"
 import { BookOpen, Github } from "lucide-react";
-import { Badge, type BadgeProps } from "@/components/ui/badge";
-import { Button, type ButtonProps } from "@/components/ui/button";
+import { Badge, type BadgeProps } from "@workspace/ui/components/badge";
+import { Button, type ButtonProps } from "@workspace/ui/components/button";
+import Link from "next/link";
+
+export type HeroButtonProps = ButtonProps & {
+  id: string;
+  text: string;
+  icon?: React.ReactNode;
+  href?: string;
+  external?: boolean;
+};
 
 type Content = {
   badge?: BadgeProps & {
@@ -8,19 +18,15 @@ type Content = {
   };
   title: string;
   description: string;
-  buttons?: (ButtonProps & {
-    id: string;
-    text: string;
-    icon?: React.ReactNode;
-  })[];
+  buttons?: HeroButtonProps[];
   images: {
     grid: {
       className: string;
-      items: {
+      items: Array<{
         id: string;
         src: string;
         className: string;
-      }[];
+      }>;
     };
   };
 };
@@ -56,68 +62,140 @@ const content: Content = {
       className: "grid grid-cols-2 gap-8",
       items: [
         {
-          id:  "image1",
+          id: "image1",
           src: "https://placehold.co/600x400",
-          className: "w-full h-full object-cover rounded-md"
+          className: "bg-muted rounded-md aspect-square"
         },
         {
           id: "image2",
           src: "https://placehold.co/600x400",
-          className: "w-full h-full object-cover rounded-md row-span-2"
+          className: "bg-muted rounded-md row-span-2"
         },
         {
           id: "image3",
           src: "https://placehold.co/320x320",
-          className: "w-full h-full object-cover rounded-md"
+          className: "bg-muted rounded-md aspect-square"
         }
       ]
     }
   },
 } as const;
 
-type HeroSplitWithGalleryProps = React.ComponentPropsWithoutRef<"section"> & Partial<Content>;
+const HeroButton = ({ href, external, text, icon, ...buttonProps }: HeroButtonProps) => {
+  if (!href) {
+    return (
+      <Button {...buttonProps}>
+        {text} {icon}
+      </Button>
+    )
+  }
 
-export const HeroSplitWithGallery = (props: HeroSplitWithGalleryProps) => {
-  const { badge, title, description, buttons, images } = {
-    ...content,
-    ...props,
-  };
+  if (external) {
+    return (
+      <Button
+        asChild
+        {...buttonProps}
+      >
+        <a 
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {text} {icon}
+        </a>
+      </Button>
+    )
+  }
 
   return (
-  <section className="w-full py-16 lg:py-32">
-    <div className="container mx-auto px-4 md:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-        <div className="flex gap-4 flex-col">
-          {badge &&
-          <div className="flex">
-            <Badge variant="outline">{badge.text}</Badge>
-          </div>
-          }
+    <Button
+      asChild
+      {...buttonProps}
+    >
+      <Link href={href}>
+        {text} {icon}
+      </Link>
+    </Button>
+  )
+}
+
+type HeroSplitWithGalleryProps = React.ComponentPropsWithoutRef<"section"> & Partial<Content>;
+
+export const HeroSplitWithGallery = ({ 
+  className,
+  ...sectionProps
+}: HeroSplitWithGalleryProps) => {
+  const {
+    badge,
+    title,
+    description,
+    buttons,
+    images
+  } = {
+    ...content,
+    ...sectionProps,
+  }
+
+  return (
+    <section 
+      className={cn(
+        "w-full py-16 lg:py-32",
+        className
+      )}
+      {...sectionProps}
+    >
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="flex gap-4 flex-col">
-            <h2 className="max-w-2xl text-3xl md:text-4xl lg:text-5xl font-bold">
+            {badge && (
+              <div className="flex">
+                <Badge variant={badge.variant} className={badge.className}>
+                  {badge.text}
+                </Badge>
+              </div>
+            )}
+            <div className="flex gap-4 flex-col">
+              <h2 className="max-w-2xl text-3xl md:text-4xl lg:text-5xl font-bold">
                 {title}
-            </h2>
-            <p className="text-base text-muted-foreground max-w-2xl">
-              {description}
-            </p>
+              </h2>
+              <p className="text-base text-muted-foreground max-w-2xl">
+                {description}
+              </p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4">
+              {buttons?.map((button) => (
+                <HeroButton 
+                  key={button.id}
+                  {...button}
+                />
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-4">
-            {buttons?.map((button) => (
-              <Button key={button.id} size={button.size} className={button.className} variant={button.variant}>
-                {button.text} {button.icon}
-              </Button>
+          <div className={cn(
+            "grid grid-cols-2 gap-8",
+            images.grid.className
+          )}>
+            {images.grid.items?.map((image) => (
+              <div 
+                key={image.id} 
+                className={cn(
+                  "relative overflow-hidden",
+                  image.className
+                )}
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.id} 
+                  className={cn(
+                    "w-full h-full object-cover",
+                    image.className
+                  )} 
+                />
+              </div>
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-8">
-          {images.grid.items?.map((image) => (
-            <div key={image.id} className={image.className}>
-              <img src={image.src} alt={image.id} className={image.className} />
-            </div>
-          ))}
-        </div>
-        </div>
       </div>
     </section>
-  );
-};
+  )
+}
