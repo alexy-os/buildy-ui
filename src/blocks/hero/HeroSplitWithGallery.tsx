@@ -56,19 +56,19 @@ const content: Content = {
       className: "grid grid-cols-2 gap-8",
       items: [
         {
-          id: "image1",
+          id:  "image1",
           src: "https://placehold.co/600x400",
-          className: "bg-muted rounded-md aspect-square"
+          className: "w-full h-full object-cover rounded-md"
         },
         {
           id: "image2",
           src: "https://placehold.co/600x400",
-          className: "bg-muted rounded-md row-span-2"
+          className: "w-full h-full object-cover rounded-md row-span-2"
         },
         {
           id: "image3",
-          src: "https://placehold.co/600x400",
-          className: "bg-muted rounded-md aspect-square"
+          src: "https://placehold.co/320x320",
+          className: "w-full h-full object-cover rounded-md"
         }
       ]
     }
@@ -89,7 +89,7 @@ export const HeroSplitWithGallery = (props: HeroSplitWithGalleryProps) => {
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
         <div className="flex gap-4 flex-col">
           {badge &&
-          <div className="flex justify-center">
+          <div className="flex">
             <Badge variant="outline">{badge.text}</Badge>
           </div>
           }
@@ -111,7 +111,9 @@ export const HeroSplitWithGallery = (props: HeroSplitWithGalleryProps) => {
         </div>
         <div className="grid grid-cols-2 gap-8">
           {images.grid.items?.map((image) => (
-            <div key={image.id} className={image.className}></div>
+            <div key={image.id} className={image.className}>
+              <img src={image.src} alt={image.id} className={image.className} />
+            </div>
           ))}
         </div>
         </div>

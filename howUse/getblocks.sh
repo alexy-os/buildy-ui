@@ -3,13 +3,13 @@
 # // Repository details
 REPO="alexy-os/buildy-ui"
 SOURCE_DIR="src/blocks"
-# TARGET_DIR="web/components/blocks" # For monorepo shadcn project
-TARGET_DIR="src/components/blocks"   # For default shadcn project
+TARGET_DIR="web/components/blocks" # For monorepo shadcn project
+# TARGET_DIR="src/components/blocks"   # For default shadcn project
 
 # // Import paths configuration
 OLD_UI_PATH="@/components/ui"
-# NEW_UI_PATH="@workspace/ui/components" # For monorepo shadcn project
-NEW_UI_PATH="@/components/ui" # For default shadcn project
+NEW_UI_PATH="@workspace/ui/components" # For monorepo shadcn project
+# NEW_UI_PATH="@/components/ui" # For default shadcn project
 
 # // Directory settings
 PROJECT_DIR=$(pwd)  # Current project directory where script is run
@@ -21,6 +21,8 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo "🚀 Starting blocks update process..."
+echo "Copying from: $SOURCE_DIR"
+echo "Copying to: $DESTINATION_PATH"
 echo "📂 Source UI path: $OLD_UI_PATH"
 echo "📂 Target UI path: $NEW_UI_PATH"
 
