@@ -8,6 +8,9 @@ bun.lockb
 
 # Build output
 dist/
+component-lists/
+component-maps/
+qdrant-lists/
 
 # IDE
 .idea/

@@ -33,7 +33,7 @@ async function generateEmbeddings() {
     });
 
     // Read input file
-    const inputPath = path.join(process.cwd(), 'qdrant-lists', 'qdrantblocks-descriptions.json');
+    const inputPath = path.join(process.cwd(), 'qdrant-example', 'qdrantblocks-descriptions.json');
     const blocks: Block[] = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
 
     console.log(`Processing ${blocks.length} blocks...`);
@@ -61,7 +61,7 @@ async function generateEmbeddings() {
     );
 
     // Write output file
-    const outputPath = path.join(process.cwd(), 'qdrant-lists', 'qdrantblocks-vector.json');
+    const outputPath = path.join(process.cwd(), 'qdrant-example', 'qdrantblocks-vector.json');
     fs.writeFileSync(outputPath, JSON.stringify(processedBlocks, null, 2));
 
     console.log(`Successfully generated embeddings and saved to ${outputPath}`);

@@ -21,7 +21,7 @@ export class QdrantList {
   private analyzer: ComponentAnalyzer;
   private outputDir: string;
 
-  constructor(outputDir: string = 'qdrant-lists') {
+  constructor(outputDir: string = 'qdrant-example') {
     this.analyzer = new ComponentAnalyzer();
     this.outputDir = path.resolve(process.cwd(), outputDir);
     this.ensureOutputDir();
