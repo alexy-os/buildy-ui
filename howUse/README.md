@@ -1,5 +1,3 @@
-
-
 # Block Update Script Usage Guide
 
 ## Overview
@@ -8,22 +6,28 @@ This script allows you to fetch and update UI blocks from a remote repository wh
 ## Setup Instructions
 
 1. **Copy the Script**
-   - Create a `bin` directory in your project root
-   - Save the script as `bin/getblocks.sh`
+   - Create a `howUse` directory in your project root
+   - Save the script as `howUse/getblocks.sh`
    - Make it executable:
    ```bash
-   chmod +x bin/getblocks.sh
+   chmod +x howUse/getblocks.sh
    ```
 
 2. **Configure Variables**
    Edit the following variables at the top of the script to match your setup:
    ```bash
-   REPO="alexy-os/buildy-ui"              # Source repository
-   TARGET_DIR="src/blocks"                # Directory in source repo
-   BLOCKS_DEST="src/components/blocks"    # Where to copy blocks in your project
-   OLD_UI_PATH="@/components/ui"          # Original import path
-   NEW_UI_PATH="@/components/ui"          # For default shadcn project
-   NEW_UI_PATH="@workspace/ui/components" # For monorepo shadcn project
+   # Repository details
+   REPO="alexy-os/buildy-ui"                 # Source repository
+   SOURCE_DIR="src/blocks"                   # Source directory in repo
+
+   # TARGET_DIR="web/components/blocks" # For monorepo shadcn project
+   TARGET_DIR="src/components/blocks"   # For default shadcn project
+
+   # Import paths configuration
+   OLD_UI_PATH="@/components/ui"             # Original import path
+
+   # NEW_UI_PATH="@workspace/ui/components" # For monorepo shadcn project
+   NEW_UI_PATH="@/components/ui" # For default shadcn project
    ```
 
 3. **Requirements**
@@ -35,12 +39,13 @@ This script allows you to fetch and update UI blocks from a remote repository wh
 
 1. **Run the Script**
    ```bash
-   ./bin/getblocks.sh
+   ./howUse/getblocks.sh
    ```
 
 2. **What the Script Does**
+   - Creates temporary directory for git operations
    - Clones specified blocks from remote repository
-   - Copies them to your designated directory
+   - Copies them to your designated target directory
    - Updates import paths in all .ts/.tsx files
    - Cleans up temporary files
 
@@ -55,15 +60,18 @@ This script allows you to fetch and update UI blocks from a remote repository wh
 - Ensure target directories are writable
 - Check git SSH configuration if clone fails
 
-## Example Configuration
+## Example Configurations
+
 ```bash
-# For default shadcn project
-BLOCKS_DEST="src/components/blocks"
+# For default project
+SOURCE_DIR="src/blocks"
+TARGET_DIR="src/components/blocks"
 OLD_UI_PATH="@/components/ui"
 NEW_UI_PATH="@/components/ui"
 
-# For monorepo shadcn project
-BLOCKS_DEST="web/components/blocks"
+# For monorepo project
+SOURCE_DIR="src/blocks"
+TARGET_DIR="web/components/blocks"
 OLD_UI_PATH="@/components/ui"
 NEW_UI_PATH="@workspace/ui/components"
 ```

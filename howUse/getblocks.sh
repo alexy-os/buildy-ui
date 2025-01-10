@@ -2,18 +2,18 @@
 
 # // Repository details
 REPO="alexy-os/buildy-ui"
-TARGET_DIR="src/blocks"
-BLOCKS_DEST="src/components/blocks"
-# BLOCKS_DEST="web/components/blocks" # For monorepo shadcn project
+SOURCE_DIR="src/blocks"
+# TARGET_DIR="web/components/blocks" # For monorepo shadcn project
+TARGET_DIR="src/components/blocks"   # For default shadcn project
 
 # // Import paths configuration
 OLD_UI_PATH="@/components/ui"
-NEW_UI_PATH="@/components/ui"
 # NEW_UI_PATH="@workspace/ui/components" # For monorepo shadcn project
+NEW_UI_PATH="@/components/ui" # For default shadcn project
 
 # // Directory settings
-CURRENT_DIR=$(pwd)
-DESTINATION_DIR="$CURRENT_DIR/$BLOCKS_DEST"
+PROJECT_DIR=$(pwd)  # Current project directory where script is run
+DESTINATION_PATH="$PROJECT_DIR/$TARGET_DIR"  # Full path to destination
 
 # // Colors for output
 GREEN='\033[0;32m'
@@ -33,20 +33,20 @@ cd $TEMP_DIR
 git init
 git remote add origin git@github.com:$REPO.git
 git sparse-checkout init --cone
-git sparse-checkout set $TARGET_DIR
+git sparse-checkout set $SOURCE_DIR
 
 # // Pull the specific directory
 git pull origin main
 
 # // Create destination directory if it doesn't exist
-mkdir -p $DESTINATION_DIR
+mkdir -p $DESTINATION_PATH
 
 # // Copy files
-cp -r $TARGET_DIR/* $DESTINATION_DIR/
+cp -r $SOURCE_DIR/* $DESTINATION_PATH/
 
 # // Replace import paths in all TypeScript/TSX files
 echo "📝 Updating import paths..."
-find $DESTINATION_DIR -type f -name "*.tsx" -o -name "*.ts" | while read file; do
+find $DESTINATION_PATH -type f -name "*.tsx" -o -name "*.ts" | while read file; do
     # Replace UI component paths
     sed -i "s|$OLD_UI_PATH|$NEW_UI_PATH|g" "$file"
     echo "Updated: $file"
@@ -58,7 +58,7 @@ rm -rf $TEMP_DIR
 
 echo -e "${GREEN}✅ Successfully completed:${NC}"
 echo "- Cloned blocks from $REPO"
-echo "- Copied to $DESTINATION_DIR"
+echo "- Copied to $DESTINATION_PATH"
 echo "- Updated import paths from $OLD_UI_PATH to $NEW_UI_PATH"
 
 # // Validation check
