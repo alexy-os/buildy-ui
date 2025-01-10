@@ -4,6 +4,7 @@
 REPO="alexy-os/buildy-ui"
 TARGET_DIR="src/blocks"
 BLOCKS_DEST="src/components/blocks"
+# BLOCKS_DEST="web/components/blocks" # For monorepo shadcn project
 
 # // Import paths configuration
 OLD_UI_PATH="@/components/ui"
