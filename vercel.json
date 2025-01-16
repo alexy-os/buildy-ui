@@ -1,8 +1,7 @@
 {
   "outputDirectory": "public",
-  "buildCommand": "bun run build",
-  "installCommand": "bun install",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./public/",
+  "buildCommand": null,
+  "installCommand": null,
   "git": {
     "deploymentEnabled": {
       "main": true

@@ -10,7 +10,7 @@
     "license": "MIT",
     "type": "module",
     "scripts": {
-        "build": "bun build index.ts --outdir public --target bun --minify",
+        "build": "echo 'No build required for static HTML'",
         "analyze": "bun run src/scripts/analyzeComponents.ts",
         "generate": "bun run src/scripts/generateComponentMap.ts",
         "list": "bun run src/scripts/generateComponentsList.ts",
