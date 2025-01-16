@@ -1,0 +1,25 @@
+{
+  "name": "CareerSection",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/business/CareerSection.tsx",
+      "content": "import { buttonVariants } from '@/components/ui/button'\r\nimport { cn } from '@/lib/utils'\r\n\r\ntype Content = {\r\n  title: string\r\n  description: string\r\n  categories: {\r\n    id: string\r\n    category: string\r\n    openings: {\r\n      id: string\r\n      title: string\r\n      location: string\r\n      link: string\r\n    }[]\r\n  }[]\r\n}\r\n\r\nconst content: Content = {\r\n  title: 'Explore Career Opportunities',\r\n  description: 'Become part of a team of advanced system design based on Radix and shadcn/ui',\r\n  categories: [\r\n    {\r\n      id: 'engineering',\r\n      category: 'Engineering',\r\n      openings: [\r\n        {\r\n          id: 'senior-software-engineer',\r\n          title: 'Senior Software Engineer',\r\n          location: 'Remote',\r\n          link: '#'\r\n        },\r\n        {\r\n          id: 'product-manager',\r\n          title: 'Product Manager',\r\n          location: 'Windhoek, Namibia',\r\n          link: '#'\r\n        },\r\n        {\r\n          id: 'qa-engineer',\r\n          title: 'QA Engineer',\r\n          location: 'Remote',\r\n          link: '#'\r\n        },\r\n        {\r\n          id: 'tech-support',\r\n          title: 'Technical Support Specialist',\r\n          location: 'Remote',\r\n          link: '#'\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      id: 'marketing',\r\n      category: 'Marketing',\r\n      openings: [\r\n        {\r\n          id: 'content-writer',\r\n          title: 'Content Writer',\r\n          location: 'Fes, Morocco',\r\n          link: '#'\r\n        },\r\n        {\r\n          id: 'social-media-manager',\r\n          title: 'Social Media Manager',\r\n          location: 'Goa, India',\r\n          link: '#'\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n} as const\r\n\r\ntype CareerSectionProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const CareerSection = (props: CareerSectionProps) => {\r\n  const { title, description, categories } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section \r\n      aria-labelledby=\"careers-heading\" \r\n      className=\"w-full py-16 lg:py-32 bg-background\"\r\n    >\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8 max-w-screen-lg\">\r\n        <header className=\"mb-12\">\r\n          <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground\">\r\n            {title}\r\n          </h2>\r\n          <p className=\"text-lg text-muted-foreground max-w-2xl py-4\">\r\n            {description}\r\n          </p>\r\n        </header>\r\n\r\n        <div className=\"space-y-12\">\r\n          {categories?.map((category) => (\r\n            <article key={category.id}>\r\n              <h3 className=\"py-4 text-xl font-bold text-muted-foreground\">\r\n                {category.category}\r\n              </h3>\r\n\r\n              {category.openings.map((job) => (\r\n                <div\r\n                  key={job.id}\r\n                  className=\"flex items-center justify-between border-b border-border py-4\"\r\n                >\r\n                  <a\r\n                    href={job.link}\r\n                    className=\"text-foreground hover:text-primary transition-colors font-medium\"\r\n                  >\r\n                    {job.title}\r\n                  </a>\r\n\r\n                  <div\r\n                    className={cn(\r\n                      buttonVariants({\r\n                        variant: 'outline',\r\n                        size: 'sm'\r\n                      }),\r\n                      'rounded-full cursor-default'\r\n                    )}\r\n                  >\r\n                    {job.location}\r\n                  </div>\r\n                </div>\r\n              ))}\r\n            </article>\r\n          ))}\r\n        </div>\r\n      </div>\r\n    </section>\r\n  )\r\n}",
+      "type": "registry:block",
+      "target": "buildy/blocks/business/CareerSection.tsx"
+    }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "FeaturesSplitCarousel",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/features/FeaturesSplitCarousel.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from \"@/components/ui/carousel\";\r\n\r\ntype Content = {\r\n  badge: string;\r\n  title: string;\r\n  description: string;\r\n  carouselItems: { id: string; label: string }[];\r\n};\r\n\r\nconst content: Content = {\r\n  badge: \"Design System\",\r\n  title: \"Discover Endless Possibilities with Buildy/UI\",\r\n  description:\r\n    \"Empower your projects with versatile and innovative solutions. Streamline your business operations with our user-friendly design system.\",\r\n  carouselItems: [\r\n    { id: \"item1\", label: \"Possibilities with Buildy/UI\" },\r\n    { id: \"item2\", label: \"Shadcn Library Integration\" },\r\n    { id: \"item3\", label: \"User-friendly UI/UX\" },\r\n    { id: \"item4\", label: \"Dark Mode Support Default\" },\r\n    { id: \"item5\", label: \"Innovate Your Brand!\" },\r\n  ],\r\n} as const;\r\n\r\ntype FeaturesSplitCarouselProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesSplitCarousel = (props: FeaturesSplitCarouselProps) => {\r\n  const { badge, title, description, carouselItems } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-10 items-end\">\r\n        <header className=\"flex flex-col gap-4 items-start\">\r\n          <Badge variant=\"outline\" className=\"rounded-full h-7\">\r\n            {badge}\r\n          </Badge>\r\n          <div className=\"flex flex-col gap-2\">\r\n            <h2 className=\"text-3xl md:text-4xl lg:text-6xl font-bold max-w-xl\">\r\n              {title}\r\n            </h2>\r\n            <p className=\"text-lg text-muted-foreground max-w-2xl\">\r\n              {description}\r\n            </p>\r\n          </div>\r\n        </header>\r\n        <div className=\"w-full max-w-full px-4 md:px-6 lg:px-8\">\r\n        <Carousel\r\n            opts={{\r\n                align: \"start\",\r\n                loop: true,\r\n            }}\r\n            >\r\n            <CarouselContent>\r\n              {carouselItems?.map((item) => (\r\n                <CarouselItem key={item.id}>\r\n                  <div className=\"flex rounded aspect-video bg-muted items-center justify-center\">\r\n                    <span className=\"text-sm\">{item.label}</span>\r\n                  </div>\r\n                </CarouselItem>\r\n              ))}\r\n            </CarouselContent>\r\n            <CarouselPrevious />\r\n            <CarouselNext />\r\n          </Carousel>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/features/FeaturesSplitCarousel.tsx"
+    }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

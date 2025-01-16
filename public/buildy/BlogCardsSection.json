@@ -1,0 +1,27 @@
+{
+  "name": "BlogCardsSection",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/blog/BlogCardsSection.tsx",
+      "content": "import { MoveRight } from \"lucide-react\";\r\nimport { Button, type ButtonProps } from \"@/components/ui/button\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  button?: (ButtonProps & {\r\n    text?: string;\r\n    icon?: React.ReactNode;\r\n  });\r\n  articles: {\r\n    id: string;\r\n    title: string;\r\n    description: string;\r\n    imageAlt: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Latest articles\",\r\n  button: {\r\n    text: \"View all articles\",\r\n    icon: <MoveRight className=\"w-4 h-4\" />\r\n  },\r\n  articles: [\r\n    {\r\n      id: \"1\",\r\n      title: \"Exploring the Future of Web Design\",\r\n      description: \"Discover how emerging technologies are reshaping the digital landscape.\",\r\n      imageAlt: \"Future of Web Design\"\r\n    },\r\n    {\r\n      id: \"2\",\r\n      title: \"10 Essential UI Design Trends for 2024\",\r\n      description: \"Stay ahead of the curve with these cutting-edge design principles.\",\r\n      imageAlt: \"UI Design Trends\"\r\n    },\r\n    {\r\n      id: \"3\",\r\n      title: \"Mastering React: Advanced Techniques for Building Scalable Apps\",\r\n      description: \"Learn how to optimize your React applications for better performance and maintainability.\",\r\n      imageAlt: \"React Advanced Techniques\"\r\n    }\r\n  ]\r\n} as const;\r\n\r\ntype BlogCardsSectionProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;  \r\n\r\nexport const BlogCardsSection = (props: BlogCardsSectionProps) => {\r\n  const { title, articles, button } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8 flex flex-col gap-8\">\r\n      <header className=\"flex w-full flex-col sm:flex-row sm:justify-between sm:items-center gap-4\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-6xl font-bold\">\r\n          {title}\r\n        </h2>\r\n        {button && (\r\n          <Button className=\"gap-4\">\r\n            {button.text} {button.icon}\r\n          </Button>\r\n        )}\r\n      </header>\r\n      <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8\">\r\n        {articles?.map((article) => (\r\n          <article id={article.id} key={article.id} className=\"flex flex-col gap-4 hover:opacity-75 cursor-pointer\">\r\n            <div \r\n              className=\"bg-muted rounded-md aspect-video mb-4\"\r\n              role=\"img\"\r\n              aria-label={article.imageAlt}></div>\r\n            <h3 className=\"text-xl tracking-tight\">{article.title}</h3>\r\n            <p className=\"text-muted-foreground text-base\">\r\n              {article.description}\r\n            </p>\r\n          </article>\r\n        ))}\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/blog/BlogCardsSection.tsx"
+    }
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

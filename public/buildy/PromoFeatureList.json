@@ -1,0 +1,25 @@
+{
+  "name": "PromoFeatureList",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/promo/PromoFeatureList.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n} from \"@/components/ui/card\";\r\nimport responsiveImage from \"@/assets/img/strategy.svg\";\r\nimport intuitiveImage from \"@/assets/img/strategy.svg\";\r\nimport aiImage from \"@/assets/img/strategy.svg\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  promotitle: string;\r\n  description: string;\r\n  features: {\r\n    title: string;\r\n    description: string;\r\n    image: string;\r\n  }[];\r\n  featureList: string[];\r\n};\r\n\r\nconst content: Content = {\r\n  promotitle: \"Powerful\",\r\n  title: \"Features\",\r\n  description:\r\n    \"Explore the core features of Buildy/UI designed to accelerate your development process and deliver seamless user experiences.\",\r\n  features: [\r\n    {\r\n      title: \"Responsive Design\",\r\n      description:\r\n        \"Create interfaces that adapt perfectly to any device with minimal effort.\",\r\n      image: responsiveImage,\r\n    },\r\n    {\r\n      title: \"Intuitive User Interface\",\r\n      description:\r\n        \"Build clean, accessible, and intuitive interfaces with pre-designed components.\",\r\n      image: intuitiveImage,\r\n    },\r\n    {\r\n      title: \"AI-Powered Insights\",\r\n      description:\r\n        \"Enhance your workflow with intelligent suggestions and prebuilt patterns.\",\r\n      image: aiImage,\r\n    },\r\n  ] as Content['features'],\r\n  featureList: [\r\n    \"Dark/Light Theme\",\r\n    \"Reviews\",\r\n    \"Feature Highlights\",\r\n    \"Pricing\",\r\n    \"Contact Form\",\r\n    \"Our Team\",\r\n    \"Responsive Design\",\r\n    \"Newsletter\",\r\n    \"Minimalist Design\",\r\n  ],\r\n} as const;\r\n\r\ntype PromoFeatureListProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoFeatureList = (props: PromoFeatureListProps) => {\r\n  const { promotitle, title, description, features, featureList } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"container mx-auto px-4 md:px-6 lg:px-8 py-16 lg:py-32 space-y-8\">\r\n      <header className=\"flex flex-col items-center gap-4 text-center\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n          <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n          {promotitle}{\" \"}\r\n          </span>\r\n          {title}\r\n        </h2>\r\n        <p className=\"text-lg text-muted-foreground max-w-2xl\">\r\n          {description}\r\n        </p>\r\n      </header>\r\n\r\n      <div className=\"flex flex-wrap justify-center gap-4\">\r\n        {featureList?.map((feature) => (\r\n          <Badge key={feature} variant=\"secondary\" className=\"text-sm\">\r\n            {feature}\r\n          </Badge>\r\n        ))}\r\n      </div>\r\n\r\n      <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\">\r\n        {features?.map(({ title, description, image }) => (\r\n          <div\r\n            key={title}\r\n            className=\"relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\"\r\n          >\r\n          <Card className=\"flex flex-col bg-secondary h-full rounded-2xl\">\r\n            <CardHeader>\r\n              <CardTitle className=\"text-xl font-semibold\">{title}</CardTitle>\r\n            </CardHeader>\r\n            <CardContent>\r\n              <p className=\"text-muted-foreground text-sm\">{description}</p>\r\n            </CardContent>\r\n            <CardFooter className=\"pt-4\">\r\n              <img\r\n                src={image}\r\n                alt={title}\r\n                className=\"w-[150px] lg:w-[250px] mx-auto\"\r\n              />\r\n            </CardFooter>\r\n          </Card>\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/promo/PromoFeatureList.tsx"
+    }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

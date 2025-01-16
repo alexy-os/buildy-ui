@@ -1,0 +1,27 @@
+{
+  "name": "BlogPostsGridSection",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/blog/BlogPostsGridSection.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\r\nimport { Button, type ButtonProps } from \"@/components/ui/button\";\r\n\r\ntype Content = {\r\n  tagline: string;\r\n  title: string;\r\n  description: string;\r\n  button: ButtonProps & {\r\n    name: string;\r\n    icon: React.ReactNode;\r\n  };\r\n  posts: {\r\n    id: string;\r\n    title: string;\r\n    summary: string;\r\n    label: string;\r\n    author: string;\r\n    published: string;\r\n    href: string;\r\n    image: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  tagline: \"Explore Insights\",\r\n  title: \"Latest Blog Posts\",\r\n  description:\r\n    \"Stay updated with the latest trends, tips, and best practices in UI/UX design. Explore how Buildy/UI empowers developers and businesses alike.\",\r\n  button: {\r\n    name: \"All Posts\",\r\n    variant: \"link\",\r\n    icon: <ArrowRight className=\"w-4 h-4\" />,\r\n  },\r\n  posts: [\r\n    {\r\n      id: \"post-1\",\r\n      title: \"The Power of Atomic Design in Modern UI/UX\",\r\n      summary:\r\n        \"Discover how atomic design principles can help you create consistent and scalable user interfaces for any application.\",\r\n      label: \"Design Systems\",\r\n      author: \"Jane Doe\",\r\n      published: \"1 Jan 2024\",\r\n      href: \"#\",\r\n      image: \"https://placehold.co/600x400?text=Atomic+Design\",\r\n    },\r\n    {\r\n      id: \"post-2\",\r\n      title: \"Why Tailwind CSS is a Game Changer for Developers\",\r\n      summary:\r\n        \"Learn how utility-first CSS frameworks like Tailwind CSS streamline development without compromising on design.\",\r\n      label: \"CSS Frameworks\",\r\n      author: \"John Smith\",\r\n      published: \"15 Jan 2024\",\r\n      href: \"#\",\r\n      image: \"https://placehold.co/600x400?text=Tailwind+CSS\",\r\n    },\r\n    {\r\n      id: \"post-3\",\r\n      title: \"Building Accessible Components with shadcn/ui\",\r\n      summary:\r\n        \"Explore the accessibility-first approach of shadcn/ui and how it ensures inclusivity for all users.\",\r\n      label: \"Accessibility\",\r\n      author: \"Alex Johnson\",\r\n      published: \"22 Jan 2024\",\r\n      href: \"#\",\r\n      image: \"https://placehold.co/600x400?text=shadcn/ui\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype BlogPostsGridSectionProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>; \r\n\r\nexport const BlogPostsGridSection = (props: BlogPostsGridSectionProps) => {\r\n  const { tagline, title, description, button, posts } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8 flex flex-col gap-16 text-center\">\r\n      <header className=\"max-w-2xl mx-auto flex flex-col gap-4\">\r\n        <p className=\"text-xs font-medium uppercase tracking-widest text-muted-foreground\">\r\n          {tagline}\r\n        </p>\r\n        <h2 className=\"text-3xl font-bold md:text-4xl lg:text-5xl\">\r\n          {title}\r\n        </h2>\r\n        <p className=\"text-muted-foreground lg:text-lg\">\r\n          {description}\r\n        </p>\r\n        <Button variant={button.variant} className=\"gap-2 self-center\">\r\n          {button.name} {button.icon}\r\n        </Button>\r\n      </header>\r\n      <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\r\n        {posts?.map((post) => (\r\n          <a\r\n            key={post.id}\r\n            href={post.href}\r\n            className=\"flex flex-col rounded-lg border border-border overflow-hidden\"\r\n          >\r\n            <img\r\n              src={post.image}\r\n              alt={post.title}\r\n              className=\"aspect-video object-cover\"\r\n            />\r\n            <div className=\"flex flex-col gap-4 p-6 text-start\">\r\n              <h3 className=\"text-lg font-semibold lg:text-xl\">\r\n                {post.title}\r\n              </h3>\r\n              <p className=\"text-sm text-muted-foreground\">\r\n                {post.summary}\r\n              </p>\r\n              <p className=\"flex items-center text-sm font-medium text-primary hover:underline\">\r\n                Read more <ArrowRight className=\"ml-2 w-4 h-4\" />\r\n              </p>\r\n            </div>\r\n          </a>\r\n        ))}\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/blog/BlogPostsGridSection.tsx"
+    }
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "FeaturesThreeColumnsIcons",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/features/FeaturesThreeColumnsIcons.tsx",
+      "content": "import {\r\n  BarChartHorizontal,\r\n  BatteryCharging,\r\n  CircleHelp,\r\n  Layers,\r\n  WandSparkles,\r\n  ZoomIn,\r\n} from 'lucide-react';\r\n\r\ntype Content = {\r\n  title: string;\r\n  description: string;\r\n  features: {\r\n    title: string;\r\n    description: string;\r\n    icon: React.ReactNode;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Flexible UI Development\",\r\n  description: \"Create your website with our intuitive and customizable UI components\",\r\n  features: [\r\n  {\r\n    title: 'Quality',\r\n    description:\r\n      'We prioritize excellence and precision in all our offerings to ensure unparalleled user satisfaction.',\r\n    icon: <ZoomIn className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Experience',\r\n    description:\r\n      'Our seasoned team provides insights and expertise drawn from years of industry know-how.',\r\n    icon: <BarChartHorizontal className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Support',\r\n    description:\r\n      'Around-the-clock assistance to ensure your needs are met with urgency and attention.',\r\n    icon: <CircleHelp className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Innovation',\r\n    description:\r\n      'Driving progress through creativity and forward-thinking solutions.',\r\n    icon: <WandSparkles className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Results',\r\n    description:\r\n      'Focusing on delivering tangible outcomes that align with your goals.',\r\n    icon: <Layers className=\"w-4 h-4\" />,\r\n  },\r\n  {\r\n    title: 'Efficiency',\r\n    description:\r\n      'Streamlined processes that save you time and resources, boosting productivity.',\r\n    icon: <BatteryCharging className=\"w-4 h-4\" />,\r\n  }\r\n]} as const;\r\n\r\ntype FeaturesThreeColumnsIconsProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const FeaturesThreeColumnsIcons = (props: FeaturesThreeColumnsIconsProps) => {\r\n  const { title, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"mb-10 md:mb-20\">\r\n          <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold mb-6\">{title}</h2>\r\n          <p className=\"text-lg text-muted-foreground max-w-2xl text-left mb-12\">{description}</p>\r\n        </div>\r\n      <div className=\"grid gap-10 md:grid-cols-2 lg:grid-cols-3\">\r\n        {features?.map((feature, id) => (\r\n          <div key={`${feature.title}-${id}`} className=\"flex flex-col\">\r\n            <div className=\"mb-5 flex size-12 items-center justify-center rounded-full bg-accent\">\r\n              {feature.icon}\r\n            </div>\r\n            <h3 className=\"mb-2 text-xl font-semibold\">{feature.title}</h3>\r\n            <p className=\"text-muted-foreground\">{feature.description}</p>\r\n          </div>\r\n        ))}\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/features/FeaturesThreeColumnsIcons.tsx"
+    }
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

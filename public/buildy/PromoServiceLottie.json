@@ -1,0 +1,28 @@
+{
+  "name": "PromoServiceLottie",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/promo/PromoServiceLottie.tsx",
+      "content": "import { ChartPie, WalletIcon, Magnet } from \"lucide-react\";\r\nimport { Card, CardHeader, CardTitle, CardDescription } from \"@/components/ui/card\";\r\nimport Lottie from \"lottie-react\";\r\nimport animationData from \"@/assets/lottie/promo.json\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  brand: string;\r\n  serviceList: {\r\n    title: string;\r\n    description: string;\r\n    icon: React.ReactNode;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Service\",\r\n  brand: \"Buildy/UI\",\r\n    serviceList: [\r\n  {\r\n    title: \"Code Collaboration\",\r\n    description:\r\n      \"Seamlessly collaborate with your team using Buildy/UI's modern tools for sharing and reviewing code.\",\r\n    icon: <ChartPie className=\"w-6 h-6 text-white\" />,\r\n  },\r\n  {\r\n    title: \"Project Management\",\r\n    description:\r\n      \"Simplify project tracking and enhance productivity with intuitive management features.\",\r\n    icon: <WalletIcon className=\"w-6 h-6 text-white\" />,\r\n  },\r\n  {\r\n    title: \"Task Automation\",\r\n    description:\r\n      \"Automate repetitive tasks and save valuable time using Buildy/UI's flexible components.\",\r\n    icon: <Magnet className=\"w-6 h-6 text-white\" />,\r\n  },\r\n]} as const;\r\n\r\ntype PromoServiceLottieProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoServiceLottie = (props: PromoServiceLottieProps) => {\r\n  const { title, brand, serviceList } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-8 lg:py-16\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8 grid lg:grid-cols-[1fr,1fr] gap-12 place-items-center\">\r\n        <div>\r\n          <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n            <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n              {title}\r\n            </span>\r\n            {brand}\r\n          </h2>\r\n\r\n          <p className=\"md:text-lg text-muted-foreground mt-4 mb-8\">\r\n            Discover how Buildy/UI can transform your design process with tools\r\n            tailored for efficiency and collaboration.\r\n          </p>\r\n\r\n          <div className=\"flex flex-col gap-6\">\r\n            {serviceList?.map(({ icon, title, description }) => (\r\n              <Card key={title} className=\"flex flex-col relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\">\r\n                <div className=\"bg-secondary rounded-2xl\">\r\n                <CardHeader className=\"space-y-1 flex md:flex-row justify-start items-start gap-4\">\r\n                  <div className=\"bg-gradient-to-b from-sky-500 to-sky-700 p-3 rounded-full\">{icon}</div>\r\n                  <div>\r\n                    <CardTitle className=\"font-bold\">\r\n                      {title}\r\n                    </CardTitle>\r\n                    <CardDescription className=\"text-sm mt-2\">\r\n                      {description}\r\n                    </CardDescription>\r\n                  </div>\r\n                </CardHeader>\r\n                </div>\r\n              </Card>\r\n            ))}\r\n          </div>\r\n        </div>\r\n\r\n        <div className=\"w-full max-w-md lg:max-w-lg\">\r\n          <Lottie animationData={animationData} loop={true} />\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};\r\n",
+      "type": "registry:block",
+      "target": "buildy/blocks/promo/PromoServiceLottie.tsx"
+    }
+  ],
+  "dependencies": [
+    "lucide-react",
+    "lottie-react"
+  ],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

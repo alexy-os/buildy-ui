@@ -1,0 +1,27 @@
+{
+  "name": "PromoHowItWorks",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/promo/PromoHowItWorks.tsx",
+      "content": "import { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\r\nimport { HandHeart, Handshake, HeartHandshake, HandCoins } from \"lucide-react\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  promotitle: string;\r\n  description: string;\r\n  features: {\r\n    id: string;\r\n    icon: React.ReactNode;\r\n    title: string;\r\n    description: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"How It\",\r\n  promotitle: \"Works\",\r\n  description:\r\n    \"Discover how Buildy/UI simplifies UI development step-by-step with modern tools and minimalistic components.\",\r\n  features: [\r\n    {\r\n      id: \"accessibility\",\r\n      icon: <HandHeart className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Accessibility\",\r\n      description:\r\n        \"Ensure inclusive and user-friendly components accessible to all users.\",\r\n    },\r\n    {\r\n      id: \"community\",\r\n      icon: <HeartHandshake className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Community\",\r\n      description:\r\n        \"Leverage an active developer community contributing to continuous improvement.\",\r\n    },\r\n    {\r\n      id: \"scalability\",\r\n      icon: <Handshake className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Scalability\",\r\n      description:\r\n        \"Scale effortlessly with modular, reusable components built for growth.\",\r\n    },\r\n    {\r\n      id: \"design\",\r\n      icon: <HandCoins className=\"w-16 h-16 stroke-1 text-sky-700\" />, // Custom size and color\r\n      title: \"Consistency\",\r\n      description:\r\n        \"Achieve a cohesive design system tailored to your branding needs.\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype PromoHowItWorksProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PromoHowItWorks = (props: PromoHowItWorksProps) => {\r\n  const { title, promotitle, description, features } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8 text-center\">\r\n      <header className=\"space-y-4\">\r\n        <h2 className=\"text-3xl md:text-4xl lg:text-5xl font-bold\">\r\n          {title}{\" \"}\r\n          <span className=\"bg-gradient-to-b from-sky-500 to-sky-700 text-transparent bg-clip-text\">\r\n          {promotitle}\r\n          </span>\r\n        </h2>\r\n        <p className=\"text-lg text-muted-foreground max-w-2xl mx-auto\">\r\n          {description}\r\n        </p>\r\n      </header>\r\n\r\n      <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8\">\r\n        {features?.map(({ id, icon, title, description }) => (\r\n          <Card key={id} className=\"relative p-[1px] bg-gradient-to-br from-sky-600 to-sky-300 dark:to-slate-600 rounded-2xl\">\r\n            <div className=\"bg-secondary rounded-2xl h-full\">\r\n            <CardHeader>\r\n              <CardTitle className=\"grid gap-4 place-items-center\">\r\n                {icon}\r\n                <span className=\"text-xl font-semibold\">{title}</span>\r\n              </CardTitle>\r\n            </CardHeader>\r\n            <CardContent>\r\n              <p className=\"text-sm text-muted-foreground text-center\">\r\n                {description}\r\n              </p>\r\n            </CardContent>\r\n            </div>\r\n          </Card>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/promo/PromoHowItWorks.tsx"
+    }
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

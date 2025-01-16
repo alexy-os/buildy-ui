@@ -1,0 +1,27 @@
+{
+  "name": "BusinessSolutionsGrid",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/business/BusinessSolutionsGrid.tsx",
+      "content": "import { Bookmark } from \"lucide-react\";\r\nimport { Badge } from \"@/components/ui/badge\";\r\n\r\ntype Content = {\r\n  badge: string;\r\n  title: string;\r\n  description: string;\r\n  cards: {\r\n    id: string;\r\n    title: string;\r\n    description: string;\r\n    icon: React.ReactNode;\r\n    className: string;\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  badge: \"buildy/ui\",\r\n  title: \"Streamline Your Business Operations\",\r\n  description:\r\n    \"Managing a business shouldn't be complicated. With Buildy/UI, create seamless workflows and improve efficiency effortlessly.\",\r\n  cards: [\r\n    {\r\n      id: \"card1\",\r\n      title: \"Shadcn Library Integration\",\r\n      description:\r\n        \"Seamlessly blend components for a cohesive and modern design aesthetic.\",\r\n      icon: <Bookmark />,\r\n      className: \"lg:col-span-2 aspect-square lg:aspect-auto\",\r\n    },\r\n    {\r\n      id: \"card2\",\r\n      title: \"Bookmark-Centric Design\",\r\n      description:\r\n        \"Deliver intuitive and engaging interfaces that resonate with your target audience.\",\r\n      icon: <Bookmark />,\r\n      className: \"aspect-square\",\r\n    },\r\n    {\r\n      id: \"card3\",\r\n      title: \"Strategic Branding\",\r\n      description:\r\n        \"Ensure consistency and elevate your brand identity across platforms.\",\r\n      icon: <Bookmark />,\r\n      className: \"aspect-square\",\r\n    },\r\n    {\r\n      id: \"card4\",\r\n      title: \"Open Source Excellence\",\r\n      description:\r\n        \"Access open source components for personal or commercial projects.\",\r\n      icon: <Bookmark />,\r\n      className: \"lg:col-span-2 aspect-square lg:aspect-auto\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype BusinessSolutionsGridProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const BusinessSolutionsGrid = (props: BusinessSolutionsGridProps) => {\r\n  const { badge, title, description, cards } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n  <section className=\"w-full py-16 lg:py-32\">\r\n    <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n      <div className=\"flex flex-col gap-8\">\r\n        <header className=\"flex flex-col gap-4 items-start\">\r\n          <Badge className=\"rounded-full h-6\">\r\n            {badge}\r\n          </Badge>\r\n          <div className=\"flex flex-col gap-2\">\r\n            <h2 className=\"text-3xl md:text-4xl lg:text-6xl font-bold max-w-xl\">\r\n              {title}\r\n            </h2>\r\n            <p className=\"text-lg text-muted-foreground max-w-2xl\">\r\n              {description}\r\n            </p>\r\n          </div>\r\n        </header>\r\n        <div className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8\">\r\n          {cards?.map((card) => (\r\n            <div\r\n              key={card.id}\r\n              className={`bg-muted rounded p-4 md:p-6 flex flex-col justify-between ${card.className}`}\r\n            >\r\n              {card.icon}\r\n              <div className=\"flex flex-col\">\r\n                <h3 className=\"text-xl font-semibold tracking-tight\">\r\n                  {card.title}\r\n                </h3>\r\n                <p className=\"text-muted-foreground text-base max-w-xs\">\r\n                  {card.description}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          ))}\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/business/BusinessSolutionsGrid.tsx"
+    }
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "PricingSection",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "src/blocks/business/PricingSection.tsx",
+      "content": "import { ArrowRight, CircleCheck } from \"lucide-react\";\r\nimport { Button, type ButtonProps } from \"@/components/ui/button\";\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n} from \"@/components/ui/card\";\r\nimport { Separator } from \"@/components/ui/separator\";\r\n\r\ntype Content = {\r\n  title: string;\r\n  description: string;\r\n  plans: {\r\n    id: string;\r\n    name: string;\r\n    description: string;\r\n    price: string;\r\n    features: string[];\r\n    buttonText: string;\r\n    buttonVariant: ButtonProps['variant'];\r\n  }[];\r\n};\r\n\r\nconst content: Content = {\r\n  title: \"Pricing\",\r\n  description: \"Choose the perfect plan for your needs, whether you're an individual or a team.\",\r\n  plans: [\r\n    {\r\n      id: \"free\",\r\n      name: \"Free\",\r\n      description: \"Ideal for personal use and exploring the basics of our design system.\",\r\n      price: \"$0\",\r\n      features: [\r\n        \"Access to all free components\",\r\n        \"Basic support\",\r\n        \"Community access\",\r\n      ],\r\n      buttonText: \"Get Started\",\r\n      buttonVariant: \"outline\",\r\n    },\r\n    {\r\n      id: \"premium\",\r\n      name: \"Premium\",\r\n      description: \"Perfect for professionals looking for advanced features.\",\r\n      price: \"$249\",\r\n      features: [\r\n        \"Everything in Free\",\r\n        \"Premium component library\",\r\n        \"Priority support\",\r\n        \"Early access to new features\",\r\n      ],\r\n      buttonText: \"Get Premium\",\r\n      buttonVariant: \"default\",\r\n    },\r\n    {\r\n      id: \"team\",\r\n      name: \"Team\",\r\n      description: \"Tailored for teams seeking collaborative tools.\",\r\n      price: \"$459\",\r\n      features: [\r\n        \"Everything in Premium\",\r\n        \"Team collaboration tools\",\r\n        \"Dedicated support\",\r\n        \"Custom component requests\",\r\n      ],\r\n      buttonText: \"Get Team Plan\",\r\n      buttonVariant: \"default\",\r\n    },\r\n  ],\r\n} as const;\r\n\r\ntype PricingSectionProps = React.ComponentPropsWithoutRef<\"section\"> & Partial<Content>;\r\n\r\nexport const PricingSection = (props: PricingSectionProps) => {\r\n  const { title, description, plans } = {\r\n    ...content,\r\n    ...props\r\n  };\r\n\r\n  return (\r\n    <section className=\"w-full py-16 lg:py-32\">\r\n      <div className=\"container mx-auto px-4 md:px-6 lg:px-8\">\r\n        <div className=\"mx-auto flex max-w-5xl flex-col items-center gap-6 text-center\">\r\n          <header className=\"flex flex-col gap-4\">\r\n            <h2 className=\"text-3xl md:text-4xl lg:text-6xl font-bold\">\r\n              {title}\r\n            </h2>\r\n            <p className=\"text-muted-foreground lg:text-xl max-w-2xl\">\r\n              {description}\r\n            </p>\r\n          </header>\r\n        <div className=\"flex flex-col items-stretch gap-6 md:flex-row\">\r\n          {plans?.map((plan) => (\r\n            <Card key={plan.id} className=\"flex max-w-80 flex-col justify-between text-left\">\r\n              <CardHeader>\r\n                <CardTitle>\r\n                  <p>{plan.name}</p>\r\n                </CardTitle>\r\n                <p className=\"text-sm text-muted-foreground\">\r\n                  {plan.description}\r\n                </p>\r\n                <span className=\"text-4xl font-bold\">{plan.price}</span>\r\n              </CardHeader>\r\n              <CardContent>\r\n                <Separator className=\"mb-6\" />\r\n                <ul className=\"space-y-4\">\r\n                  {plan.features.map((feature, index) => (\r\n                    <li key={index} className=\"flex items-center gap-2\">\r\n                      <CircleCheck className=\"w-4 h-4 text-success\" />\r\n                      <span>{feature}</span>\r\n                    </li>\r\n                  ))}\r\n                </ul>\r\n              </CardContent>\r\n              <CardFooter className=\"mt-auto\">\r\n                <Button className=\"w-full\" variant={plan.buttonVariant}>\r\n                  {plan.buttonText}\r\n                  <ArrowRight className=\"ml-2 w-4 h-4\" />\r\n                </Button>\r\n              </CardFooter>\r\n            </Card>\r\n          ))}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  );\r\n};",
+      "type": "registry:block",
+      "target": "buildy/blocks/business/PricingSection.tsx"
+    }
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}
